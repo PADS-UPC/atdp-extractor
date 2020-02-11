@@ -1,0 +1,14 @@
+#--------------------IF---------------
+/¦ACTION:.*¦/=result >, /¦if¦/=condition
+/¦ACTION:.*¦/=result > (/¦be¦|¦do¦/ > (/¦if¦/=condition !<< /¦CONDITION:.*¦/))
+/¦ACTION:.*¦/=result > (/¦be¦/ > (/¦have¦/ > /¦if¦/=condition))
+#------------------WHETHER----------------
+/¦ACTION:.*¦/=result > /¦whether¦/=condition
+/¦ACTION:.*¦/=result > (/¦or¦/ >> /¦whether¦/=condition)
+/¦ACTION:.*¦/=result > (/¦be¦/ > /¦whether¦/=condition)
+/¦ACTION:.*¦/=result > (/¦be¦/ > (/¦verb¦/ > /¦whether¦/=condition))
+#--------------------IN CASE---------------
+/¦ACTION:.*¦/=result < /¦in_case¦/=condition
+# -------------------EITHER----------------
+/¦ACTION:.*¦/=result < /¦either¦/=condition < /¦or¦/
+/¦ACTION:.*¦/=result > (/¦or¦/ > (/¦noun¦|¦verb¦/ < /¦either¦/=condition))

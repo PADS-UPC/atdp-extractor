@@ -1,0 +1,16 @@
+#-------------- from CONDITION -------------------
+/¦CONDITION:.*¦/=origin >: (/¦if¦/ > /¦ACTIVITY:.*¦/=destination)
+/¦CONDITION:.*¦/=origin >: (/¦if¦/ > (/¦verb¦/ < /¦ACTIVITY:.*¦/=destination))
+/¦CONDITION:.*¦/=origin >: (/¦if¦/ > (/¦verb¦/ < (/¦be¦|¦to¦/ < /¦ACTIVITY:.*¦/=destination)))
+/¦CONDITION:.*¦/=origin > (/¦be¦|¦do¦/ > (/¦if¦/ > (/¦verb¦/ < /¦ACTIVITY:.*¦/=destination)))
+#
+/¦CONDITION:.*¦/=origin >> (/¦case¦/ >: (/¦in¦/ > /¦ACTIVITY:.*¦/=destination))
+/¦CONDITION:.*¦/=origin >> (/¦case¦/ >: (/¦in¦/ > (/¦be¦/ < /¦ACTIVITY:.*¦/=destination)))
+#----------- EVENT --------------------------
+/¦EVENT:.*¦/=origin > /¦ACTIVITY:.*¦/=destination
+/¦EVENT:.*¦/=origin >> (/¦verb¦/ << /¦ACTIVITY:.*¦/=destination)
+#
+#---------ACTIVITIES---------------------------
+/¦ACTIVITY:.*¦/=origin < (/¦and¦/ << (/¦ACTIVITY:.*¦/=destination < /¦then¦/ ))
+#
+/¦CONDITION:.*¦/=origin >> (/¦if¦/ < (/¦be¦/ < /¦ACTIVITY:.*¦/=destination))

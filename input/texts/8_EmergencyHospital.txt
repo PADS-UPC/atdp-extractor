@@ -1,0 +1,21 @@
+The process starts when patients arrive at the emergency ward of an hospital. Upon their arrival, patients are assigned a triage color. Only in exceptional cases, patients are assigned the triage color white.
+
+Patients classified as white typically leave the emergency ward after being registered, because their injuries do not require an urgent, immediate attendance by a doctor. All other patients are also registered, assigned to a responsible nurse and admitted to the emergency ward.
+
+While patients are in the emergency ward, the nurse checks their condition every hour. For the patients under consideration the medical examination consists of at least on of the medical diagnostic test and one visit by a doctor. There are two different work practices regarding these two activities.
+
+1. Normally, a doctor visits the patients and afterwards the diagnostic test is conducted.
+
+2. Sometimes, these activities are executed in a reversed order: first the medical diagnostic test is taken and, only thereafter, a doctor visits the patient.
+
+Both the medical diagnostic test and the visit of a doctor can be repeated if necessary. Afterwards, a doctor visits the patient one more time and decides how to proceed in any of the following ways:
+
+1. to transfer the patient to a ward whithin the hospital
+
+2. to transfer the patient to another hospital (tertiary care), or
+
+3. to discharge of the patient
+
+Regardless of the decision, the patient is prepared for a possible transfer or discharge. If possible, the hospital wants to implement the retain familiar constraint. The nurse who registered the patient shall also prepare the patient for transfer or discharge. For a specific group of patients, i.e., those who are transferred to another hospital, an ambulance needs to be organized.
+
+Finally, the patient leaves the emergency ward of the hospital, either by being transferred, being discharged or being moved to a special observatory ward for further observation. Patients that are moved to the observatory ward may be subject to further examinations, which we consider out of the scope of this process.
