@@ -20,7 +20,7 @@ public class AtdpExtractor {
 	private static File treeFolder = new File(FoldersUrl.TREE_FOLDER.toString());
 
 	public static void main(String[] args) throws IOException, ParseException {
-		if (args.length == 0) {
+		if (args.length != 0) {
 			for (File path : textFolder.listFiles()) {
 				String nlpTextFilePath = path.toString();
 				String justNameOfFile = Utils.getFileNameWithoutExtension(new File(nlpTextFilePath));

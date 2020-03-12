@@ -42,7 +42,7 @@ public class PredicateHandler {
 			while (predicatesIterator.hasNext()) {
 				JSONObject newJsonObject = (JSONObject) predicatesIterator.next();
 				Predicate predicate = createNewPredicate(newJsonObject);
-				if (tokens.get(predicate.getHead_token()).getWn() != null)
+				//if (tokens.get(predicate.getHead_token()).getWn() != null)
 					if (tokens.get(predicate.getHead_token()).getPos().equals("verb")
 							|| tokens.get(predicate.getHead_token()).getPos().equals("noun")) {
 						parsePredicateArgumentActors(predicate, newJsonObject);

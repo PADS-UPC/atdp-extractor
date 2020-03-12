@@ -1,4 +1,0 @@
-#If the design is OK.
-/¦be¦/=result < /¦ok¦/=object  > /¦if¦/=condition
-#In the former case,...
-/¦adjective¦/=result > (/¦case¦/=object > /¦in¦/=condition !<< /¦ACTION:.*¦/ )

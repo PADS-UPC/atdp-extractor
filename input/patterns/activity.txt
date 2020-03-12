@@ -1,4 +1,10 @@
+/¦ACTION:.*¦/=result < /¦then¦/
+/¦ACTION:.*¦/=result > (/¦be¦/ < /¦then¦/)
 #
-/¦ACTION:.*¦/=result > /¦be¦/ $-- /¦,¦/
-/¦ACTION:.*¦/=result < /¦and¦|¦or¦/ | > /¦and¦|¦or¦/ !>> /¦whether¦|¦if¦/
-/¦ACTION:.*¦/=result > (/¦be¦/ > /¦and¦|¦or¦/) !>> /¦whether¦|¦if¦/
+/¦ACTION:.*¦/=result > /¦after¦/
+/¦ACTION:.*¦/=result > (/¦be¦/ > /¦after¦/)
+#
+/¦ACTION:.*¦/=result > /¦before¦/
+#
+/¦ACTION:.*¦/=result < /¦and¦|¦or¦/ | > /¦and¦|¦or¦/
+/¦ACTION:.*¦/=result > (/¦be¦/ > /¦and¦|¦or¦/)

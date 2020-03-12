@@ -1,0 +1,104 @@
+T0	Condition 1790 1817	Finally , the patient leaves 
+T1	Condition 1903 1968	being moved to a special observatory ward for further observation 
+T2	Action 33 39	arrive
+T3	Action 89 96	arrival
+T4	Action 111 119	assigned
+T5	Action 176 184	assigned
+T6	Action 219 229	classified
+T7	Action 249 254	leave
+T8	Action 286 296	registered
+T9	Action 328 335	require
+T10	Action 409 419	registered
+T11	Action 421 429	assigned
+T12	Action 814 820	visits
+T13	Action 872 881	conducted
+T14	Action 919 927	executed
+T15	Action 933 941	reversed
+T16	Action 986 991	taken
+T17	Action 1110 1118	repeated
+T18	Action 1154 1160	visits
+T19	Action 1251 1259	transfer
+T20	Action 1310 1318	transfer
+T21	Action 1378 1387	discharge
+T22	Action 1447 1455	prepared
+T23	Action 1529 1538	implement
+T24	Action 1585 1595	registered
+T25	Action 1619 1626	prepare
+T26	Action 1643 1651	transfer
+T27	Action 1778 1787	organized
+T28	Action 1988 1993	moved
+T29	Action 2067 2075	consider
+T30	Action 2087 2092	scope
+T31	Entity 210 218	patient
+T32	Entity 312 320	injury
+T33	Entity 807 813	doctor
+T35	Entity 1511 1519	hospital
+T36	Entity 1575 1580	nurse
+T38	Entity 24 32	patient
+T39	Entity 83 88	their
+T40	Entity 98 106	patient
+T41	Entity 163 171	patient
+T42	Entity 210 218	patient
+T43	Entity 259 273	emergency ward
+T44	Entity 210 218	patient
+T45	Entity 339 379	urgent immediate attendance by doctor
+T46	Entity 385 399	other patient
+T47	Entity 385 399	other patient
+T48	Entity 825 833	patient
+T49	Entity 853 868	diagnostic test
+T50	Entity 904 914	activity
+T51	Entity 942 947	order
+T52	Entity 949 982	1 medical diagnostic test
+T53	Entity 1053 1076	medical diagnostic test
+T54	Entity 1165 1186	patient 1 time
+T55	Entity 1264 1271	patient
+T56	Entity 1323 1330	patient
+T57	Entity 1395 1402	patient
+T58	Entity 1436 1443	patient
+T59	Entity 1550 1569	familiar constraint
+T60	Entity 1600 1607	patient
+T61	Entity 1631 1638	patient
+T62	Entity 1631 1638	patient
+T63	Entity 1756 1765	ambulance
+T64	Entity 1970 1978	patient
+T65	Entity 2036 2056	further examination
+T66	Entity 2101 2108	process
+R0	Agent Arg1:T7 Arg2:T31
+R1	Agent Arg1:T9 Arg2:T32
+R2	Agent Arg1:T12 Arg2:T33
+R3	Agent Arg1:T18 Arg2:T33
+R4	Agent Arg1:T23 Arg2:T35
+R5	Agent Arg1:T24 Arg2:T36
+R6	Agent Arg1:T25 Arg2:T36
+R7	Patient Arg1:T2 Arg2:T38
+R8	Patient Arg1:T3 Arg2:T39
+R9	Patient Arg1:T4 Arg2:T40
+R10	Patient Arg1:T5 Arg2:T41
+R11	Patient Arg1:T6 Arg2:T42
+R12	Patient Arg1:T7 Arg2:T43
+R13	Patient Arg1:T8 Arg2:T42
+R14	Patient Arg1:T9 Arg2:T45
+R15	Patient Arg1:T10 Arg2:T46
+R16	Patient Arg1:T11 Arg2:T46
+R17	Patient Arg1:T12 Arg2:T48
+R18	Patient Arg1:T13 Arg2:T49
+R19	Patient Arg1:T14 Arg2:T50
+R20	Patient Arg1:T15 Arg2:T51
+R21	Patient Arg1:T16 Arg2:T52
+R22	Patient Arg1:T17 Arg2:T53
+R23	Patient Arg1:T18 Arg2:T54
+R24	Patient Arg1:T19 Arg2:T55
+R25	Patient Arg1:T20 Arg2:T56
+R26	Patient Arg1:T21 Arg2:T57
+R27	Patient Arg1:T22 Arg2:T58
+R28	Patient Arg1:T23 Arg2:T59
+R29	Patient Arg1:T24 Arg2:T60
+R30	Patient Arg1:T25 Arg2:T61
+R31	Patient Arg1:T26 Arg2:T61
+R32	Patient Arg1:T27 Arg2:T63
+R33	Patient Arg1:T28 Arg2:T64
+R34	Patient Arg1:T29 Arg2:T65
+R35	Patient Arg1:T30 Arg2:T66
+R43	Sequence Arg1:T8 Arg2:T7
+R44	Sequence Arg1:T10 Arg2:T11
+R88	Conflict Arg1:T0 Arg2:T1

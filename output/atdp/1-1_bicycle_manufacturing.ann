@@ -1,0 +1,74 @@
+T0	Condition 178 184	reject 
+T1	Condition 188 194	accept 
+T2	Condition 480 510	the part is available in-house 
+T3	Condition 532 551	it is not available 
+T4	Condition 745 801	the storehouse has successfully reserved or back-ordered 
+T5	Action 16 28	manufactures
+T6	Action 29 39	customized
+T7	Action 81 89	receives
+T8	Action 126 133	created
+T9	Action 211 221	customized
+T10	Action 273 281	finished
+T11	Action 354 362	informed
+T12	Action 392 401	processes
+T13	Action 444 452	required
+T14	Action 518 526	reserved
+T15	Action 559 571	back-ordered
+T16	Action 592 600	repeated
+T17	Action 678 686	prepares
+T18	Action 706 716	assembling
+T19	Action 724 731	ordered
+T20	Action 863 871	finished
+T21	Action 900 909	assembles
+T22	Action 995 1003	finishes
+T23	Entity 2 15	small company
+T24	Entity 64 80	sale department
+T25	Entity 138 157	member of sale
+T27	Entity 369 379	storehouse
+T28	Entity 484 488	part
+T29	Entity 655 677	engineering department
+T31	Entity 40 48	bicycle
+T32	Entity 40 48	bicycle
+T33	Entity 93 98	order
+T34	Entity 93 98	order
+T35	Entity 222 226	bike
+T36	Entity 253 269	process instance
+T37	Entity 308 318	storehouse
+T38	Entity 406 428	part list of order
+T39	Entity 453 474	quantity of part
+T40	Entity 512 514	it
+T41	Entity 553 555	it
+T42	Entity 579 588	procedure
+T43	Entity 687 701	everything for
+T44	Entity 732 739	bicycle
+T45	Entity 732 739	bicycle
+T46	Entity 808 824	item of part
+T47	Entity 914 921	bicycle
+T48	Entity 1008 1024	process instance
+R0	Agent Arg1:T5 Arg2:T23
+R1	Agent Arg1:T7 Arg2:T24
+R2	Agent Arg1:T12 Arg2:T27
+R3	Agent Arg1:T17 Arg2:T29
+R4	Agent Arg1:T21 Arg2:T29
+R5	Patient Arg1:T5 Arg2:T31
+R6	Patient Arg1:T6 Arg2:T31
+R7	Patient Arg1:T7 Arg2:T33
+R8	Patient Arg1:T8 Arg2:T33
+R9	Patient Arg1:T9 Arg2:T35
+R10	Patient Arg1:T10 Arg2:T36
+R11	Patient Arg1:T11 Arg2:T37
+R12	Patient Arg1:T12 Arg2:T38
+R13	Patient Arg1:T13 Arg2:T39
+R14	Patient Arg1:T14 Arg2:T40
+R15	Patient Arg1:T15 Arg2:T41
+R16	Patient Arg1:T16 Arg2:T42
+R17	Patient Arg1:T17 Arg2:T43
+R18	Patient Arg1:T18 Arg2:T44
+R19	Patient Arg1:T19 Arg2:T44
+R20	Patient Arg1:T20 Arg2:T46
+R21	Patient Arg1:T21 Arg2:T47
+R22	Patient Arg1:T22 Arg2:T48
+R28	Sequence Arg1:T2 Arg2:T14
+R29	Sequence Arg1:T3 Arg2:T15
+R30	Sequence Arg1:T4 Arg2:T21
+R59	Conflict Arg1:T0 Arg2:T1

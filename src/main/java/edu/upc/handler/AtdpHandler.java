@@ -26,10 +26,6 @@ public class AtdpHandler {
 		this.tokens = tokens;
 		PatternsHandler patternHandler = new PatternsHandler(tokens, trees, activitiesList);
 		this.activitiesList = patternHandler.getActivitiesList();
-	}
-
-	public String getAnnotationTextFromActivities() throws IOException {
-		String text = "";
 		Integer count = 0;
 
 		generateConditionAnnotationList(count, activitiesList);
@@ -41,6 +37,11 @@ public class AtdpHandler {
 		count = generateAgentAnnotationList(count, activitiesList);
 
 		generatePatientAnnotationList(count, activitiesList);
+	}
+
+	public String getAnnotationTextFromActivities() throws IOException {
+		String text = "";
+		Integer count = 0;
 
 		text += makeText(conditionAnnotationList);
 		text += makeText(actionAnnotationList);
@@ -58,7 +59,7 @@ public class AtdpHandler {
 		count += Integer.parseInt(array[1]);
 		array = makeSequenceRelationText(count);
 		text += array[0];
-		
+
 		count += Integer.parseInt(array[1]);
 		array = makeConflictRelationText(count);
 		text += array[0];
@@ -150,6 +151,7 @@ public class AtdpHandler {
 		String[] array = { text, count.toString() };
 		return array;
 	}
+
 	private String[] makeConflictRelationText(Integer count) {
 		String text = "";
 		for (Entry<String, Activity> activity : activitiesList.entrySet()) {
@@ -382,18 +384,9 @@ public class AtdpHandler {
 			if (activity.getValue().getRole().equals(ActionType.CONDITION)) {
 				Integer begin = 0;
 				Integer end = 0;
-				String text = tokens.get(activity.getKey()).getForm().toLowerCase();
-				text += " " + activity.getValue().getPatient().getShortText();
-				if (activity.getValue().getAction().getBegin() <= activity.getValue().getPatient().getBegin()) {
-					begin = activity.getValue().getAction().getBegin();
-				} else {
-					begin = activity.getValue().getPatient().getBegin();
-				}
-				if (activity.getValue().getAction().getEnd() >= activity.getValue().getPatient().getEnd()) {
-					end = activity.getValue().getAction().getEnd();
-				} else {
-					end = activity.getValue().getPatient().getEnd();
-				}
+				String text = activity.getValue().getAction().getWord();
+				begin = activity.getValue().getAction().getBegin();
+				end = activity.getValue().getAction().getEnd();
 				String words[] = { "T" + count, "Condition", begin.toString(), end.toString(), text };
 				conditionAnnotationList.add(words);
 				activity.getValue().setPatient(null);
@@ -401,6 +394,46 @@ public class AtdpHandler {
 			}
 		}
 
+	}
+
+	public ArrayList<String[]> getActionAnnotationList() {
+		return actionAnnotationList;
+	}
+
+	public void setActionAnnotationList(ArrayList<String[]> actionAnnotationList) {
+		this.actionAnnotationList = actionAnnotationList;
+	}
+
+	public ArrayList<String[]> getConditionAnnotationList() {
+		return conditionAnnotationList;
+	}
+
+	public void setConditionAnnotationList(ArrayList<String[]> conditionAnnotationList) {
+		this.conditionAnnotationList = conditionAnnotationList;
+	}
+
+	public ArrayList<String[]> getEventAnnotationList() {
+		return eventAnnotationList;
+	}
+
+	public void setEventAnnotationList(ArrayList<String[]> eventAnnotationList) {
+		this.eventAnnotationList = eventAnnotationList;
+	}
+
+	public ArrayList<String[]> getAgentAnnotationList() {
+		return agentAnnotationList;
+	}
+
+	public void setAgentAnnotationList(ArrayList<String[]> agentAnnotationList) {
+		this.agentAnnotationList = agentAnnotationList;
+	}
+
+	public ArrayList<String[]> getPatientAnnotationList() {
+		return patientAnnotationList;
+	}
+
+	public void setPatientAnnotationList(ArrayList<String[]> patientAnnotationList) {
+		this.patientAnnotationList = patientAnnotationList;
 	}
 
 }

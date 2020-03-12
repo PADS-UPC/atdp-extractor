@@ -1,14 +1,16 @@
-#--------------------IF---------------
-/¦ACTION:.*¦/=result >, /¦if¦/=condition
-/¦ACTION:.*¦/=result > (/¦be¦|¦do¦/ > (/¦if¦/=condition !<< /¦CONDITION:.*¦/))
-/¦ACTION:.*¦/=result > (/¦be¦/ > (/¦have¦/ > /¦if¦/=condition))
-#------------------WHETHER----------------
-/¦ACTION:.*¦/=result > /¦whether¦/=condition
-/¦ACTION:.*¦/=result > (/¦or¦/ >> /¦whether¦/=condition)
-/¦ACTION:.*¦/=result > (/¦be¦/ > /¦whether¦/=condition)
-/¦ACTION:.*¦/=result > (/¦be¦/ > (/¦verb¦/ > /¦whether¦/=condition))
-#--------------------IN CASE---------------
-/¦ACTION:.*¦/=result < /¦in_case¦/=condition
-# -------------------EITHER----------------
-/¦ACTION:.*¦/=result < /¦either¦/=condition < /¦or¦/
-/¦ACTION:.*¦/=result > (/¦or¦/ > (/¦noun¦|¦verb¦/ < /¦either¦/=condition))
+#-------------------- whether --------------------
+/¦verb¦/=result >, /¦whether¦/=condition
+/¦verb¦|¦adverb¦/=result >, (/¦or¦/ >> /¦whether¦/=condition)
+#-------------------- if -------------------------
+/¦verb|noun¦/=result >, /¦if¦/=condition
+#/¦verb¦/=result >, /¦if¦/=condition
+# otherwise if the test is not ok ...
+/¦verb¦/=result >- (/¦if¦/=condition <, /¦adverb¦/)
+#-------------------- either ----------------------
+/¦verb|:.*¦/=result < /¦either¦/=condition << /¦or¦/
+/¦verb|:.*¦/=result > (/¦or¦/ >> (/¦verb¦/ < /¦either¦/=condition))
+#-------------------- can ----------------------
+/¦verb¦|¦noun¦/=result > /¦can¦/=condition < (/¦or¦/ < /¦verb¦|¦noun¦/)
+/¦verb¦|¦noun¦/=result > (/¦be¦/ > /¦can¦/=condition << (/¦or¦/ < /¦verb¦|¦noun¦/))
+/¦verb¦|¦noun¦/=result > (/¦or¦/ > (/¦verb¦|¦noun¦/ > /¦can¦/=condition))
+/¦verb¦|¦noun¦/=result > (/¦or¦/ > (/¦verb¦|¦noun¦/ > (/¦be¦/ > /¦can¦/=condition)))

@@ -39,6 +39,9 @@ public class TreesHandler {
 			if (activity.getPatient() != null) {
 				newNode = tree.value() + activity.getRole() + ":" + activity.getPatient().getId() + Utils.separator;
 				tree.setValue(newNode);
+			}else {
+				newNode = tree.value() + activity.getRole() + ":null" + Utils.separator;
+				tree.setValue(newNode);
 			}
 		}
 		Iterator<?> treeIterator = tree.getChildrenAsList().iterator();
@@ -72,7 +75,7 @@ public class TreesHandler {
 		TreesHandler treesHandler = new TreesHandler(activitiesList, tokens);
 		treesHandler.removeObjectsToTreeNodes(trees);
 		treesHandler.addObjectsToTreeNodes(trees);
-		//Files.write(Paths.get(FilesUrl.TEMPORAL_TREE.toString()), trees.toString().getBytes());
+		Files.write(Paths.get(FilesUrl.TEMPORAL_TREE.toString()), trees.toString().getBytes());
 
 	}
 }

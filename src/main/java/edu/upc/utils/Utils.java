@@ -13,6 +13,13 @@ import edu.upc.entities.Token;
 public class Utils {
 	public static final String separator = "¦";
 
+	public static boolean isToApplyPattern() throws IOException {
+		String applyPatterns = readPatternFile(FilesUrl.APPLY_PATTERNS_FILE.toString()).get(0);
+		if (applyPatterns.equals("all"))
+			return true;
+		return false;
+	}
+
 	public static boolean isNounAction(String wn, String lemma) throws IOException {
 		ArrayList<String[]> nounActivityList = readNounActivityFile(FilesUrl.FREEELING_NOUN_CONFIG_FILE.toString());
 		for (int i = 0; i < nounActivityList.size(); i++) {
@@ -30,7 +37,7 @@ public class Utils {
 	}
 
 	public static String removeObject(String text) {
-		String textTmp = text.replaceAll(":t[1-9][0-9]?.*" + separator, "");
+		String textTmp = text.replaceAll(":t[1-9][0-9]?.*|:null" + separator, "");
 		if (!text.equals(textTmp)) {
 			Integer pos = text.lastIndexOf(separator);
 			textTmp = text.substring(0, pos);
@@ -60,7 +67,12 @@ public class Utils {
 	public static String makeNode(Object token, LinkedHashMap<String, Token> tokens) {
 		String word = separator + tokens.get(token).getId();
 		word += separator + tokens.get(token).getPos();
-		word += separator + tokens.get(token).getLemma();
+		if (tokens.get(token).getLemma().equals("("))
+			word += separator + "Fpa";
+		else if (tokens.get(token).getLemma().equals(")"))
+			word += separator + "Fpt";
+		else
+			word += separator + tokens.get(token).getLemma();
 		word += separator + tokens.get(token).getCtag();
 		word += separator;
 		return word;

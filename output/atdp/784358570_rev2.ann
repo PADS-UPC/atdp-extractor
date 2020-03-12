@@ -1,0 +1,91 @@
+T0	Condition 69 106	all the requested items are available 
+T1	Condition 425 450	all products are on store 
+T2	Condition 455 471	everything is OK 
+T3	Condition 111 131	something is missing 
+T4	Action 22 31	reviewing
+T5	Action 77 86	requested
+T6	Action 124 131	missing
+T7	Action 150 156	inform
+T8	Action 204 211	missing
+T9	Action 251 263	discontinued
+T10	Action 293 301	informed
+T11	Action 346 353	waiting
+T12	Action 383 391	delivery
+T13	Action 488 498	recollects
+T14	Action 516 523	prepare
+T15	Action 555 563	informed
+T16	Action 574 587	pre-processed
+T17	Action 617 624	informs
+T18	Action 702 709	process
+T19	Action 745 751	picked
+T20	Action 762 770	designed
+T21	Action 781 792	centralized
+T22	Action 801 808	decides
+T23	Action 827 834	deliver
+T24	Action 874 882	delivers
+T25	Action 907 913	update
+T26	Action 949 957	notified
+T27	Entity 4 11	process
+T28	Entity 137 142	staff
+T31	Entity 601 616	courier company
+T32	Entity 683 698	human resource
+T33	Entity 771 777	driver
+T34	Entity 793 800	service
+T35	Entity 36 41	order
+T36	Entity 87 92	item
+T37	Entity 111 120	something
+T38	Entity 157 183	customer about potential
+T39	Entity 212 220	product
+T40	Entity 264 268	item
+T41	Entity 274 282	customer
+T42	Entity 357 369	average of x
+T43	Entity 357 369	average of x
+T44	Entity 503 511	product
+T45	Entity 526 533	package
+T46	Entity 539 546	courier
+T47	Entity 588 595	package
+T48	Entity 629 653	client about potential
+T49	Entity 714 722	delivery
+T50	Entity 734 741	package
+T51	Entity 771 777	driver
+T52	Entity 793 800	service
+T53	Entity 813 823	good route
+T54	Entity 839 856	driver package
+T55	Entity 887 894	package
+T56	Entity 918 924	system
+T57	Entity 932 944	stakeholder
+R0	Agent Arg1:T4 Arg2:T27
+R1	Agent Arg1:T7 Arg2:T28
+R2	Agent Arg1:T13 Arg2:T28
+R3	Agent Arg1:T14 Arg2:T28
+R4	Agent Arg1:T17 Arg2:T31
+R5	Agent Arg1:T18 Arg2:T32
+R6	Agent Arg1:T19 Arg2:T33
+R7	Agent Arg1:T22 Arg2:T34
+R8	Patient Arg1:T4 Arg2:T35
+R9	Patient Arg1:T5 Arg2:T36
+R10	Patient Arg1:T6 Arg2:T37
+R11	Patient Arg1:T7 Arg2:T38
+R12	Patient Arg1:T8 Arg2:T39
+R13	Patient Arg1:T9 Arg2:T40
+R14	Patient Arg1:T10 Arg2:T41
+R15	Patient Arg1:T11 Arg2:T42
+R16	Patient Arg1:T12 Arg2:T42
+R17	Patient Arg1:T13 Arg2:T44
+R18	Patient Arg1:T14 Arg2:T45
+R19	Patient Arg1:T15 Arg2:T46
+R20	Patient Arg1:T16 Arg2:T47
+R21	Patient Arg1:T17 Arg2:T48
+R22	Patient Arg1:T18 Arg2:T49
+R23	Patient Arg1:T19 Arg2:T50
+R24	Patient Arg1:T20 Arg2:T51
+R25	Patient Arg1:T21 Arg2:T52
+R26	Patient Arg1:T22 Arg2:T53
+R27	Patient Arg1:T23 Arg2:T54
+R28	Patient Arg1:T24 Arg2:T55
+R29	Patient Arg1:T25 Arg2:T56
+R30	Patient Arg1:T26 Arg2:T57
+R39	Sequence Arg1:T2 Arg2:T13
+R40	Sequence Arg1:T13 Arg2:T14
+R41	Sequence Arg1:T3 Arg2:T7
+R42	Sequence Arg1:T3 Arg2:T6

@@ -1,0 +1,1 @@
+/¦ACTION:.*¦/=toRemove >> /¦if¦|¦whether¦/=condition

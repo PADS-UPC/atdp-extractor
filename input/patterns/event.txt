@@ -5,3 +5,5 @@
 /¦ACTION:.*¦/=result >> (/¦as¦/ >- /¦soon¦/=condition)
 #------------when----------
 /¦ACTION:.*¦/=result <, /¦when¦/=condition
+#
+/¦ACTION:.*¦/=result < /¦whenever¦/=condition

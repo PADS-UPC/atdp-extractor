@@ -1,25 +1,6 @@
-/¦be¦.*¦ACTION:.*¦/=toRemove
-/¦become¦.*¦ACTION:.*¦/=toRemove
-/¦consist¦.*¦ACTION:.*¦/=toRemove < /¦IN¦/
-/¦welcome¦.*¦ACTION:.*¦/=toRemove
-/¦understand¦.*¦ACTION:.*¦/=toRemove
-/¦follow¦.*¦ACTION:.*¦/=toRemove
-/¦affect¦.*¦ACTION:.*¦/=toRemove
-/¦regard¦.*¦ACTION:.*¦/=toRemove
-/¦repeat¦.*¦ACTION:.*¦/=toRemove
-#Remove Actions after first condition
-/¦ACTION:.*¦/=toRemove >> /¦if¦/
-/¦ACTION:.*¦/=toRemove >> /¦whether¦/=condition
-/¦ACTION:.*¦/=toRemove >> (/¦or¦/ >> /¦whether¦/=condition)
-#
-#A check is performed to see if the amount of the expense exceeds 200
-/¦CONDITION:.*¦/=toRemove >> (/¦if¦/ >> /¦to¦/)
-#
-/¦start¦.*¦.*¦/=toRemove < /¦process¦/
-/¦start¦.*¦.*¦/=toRemove > (/¦be¦/ < /¦process¦/)
-#
-#----------
-# It must be the last line
 # Remove all actions below the main action
 /¦ACTION:.*¦/=toRemove >> /¦ACTION:.*¦/=result !>> /¦and¦|¦or¦/ !< /¦pronoun¦/
+/¦ACTION:.*¦/=toRemove >> (/¦ACTION:.*¦/=result >> /¦and¦|¦or¦/)
+/¦ACTION:.*¦/=toRemove >> (/¦ACTIVITY:.*¦/=result !<< /¦and¦|¦or¦/)
+
 

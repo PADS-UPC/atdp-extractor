@@ -1,16 +1,38 @@
-#-------------- from CONDITION -------------------
-/¦CONDITION:.*¦/=origin >: (/¦if¦/ > /¦ACTIVITY:.*¦/=destination)
-/¦CONDITION:.*¦/=origin >: (/¦if¦/ > (/¦verb¦/ < /¦ACTIVITY:.*¦/=destination))
-/¦CONDITION:.*¦/=origin >: (/¦if¦/ > (/¦verb¦/ < (/¦be¦|¦to¦/ < /¦ACTIVITY:.*¦/=destination)))
+#-------------- from CONDITION to ACTIVITY -------------------
+/¦CONDITION:.*¦/=origin >, (/¦if¦/ > /¦ACTIVITY:.*¦/=destination)
+/¦CONDITION:.*¦/=origin >, (/¦if¦/ > (/¦verb¦/ < /¦ACTIVITY:.*¦/=destination))
+/¦CONDITION:.*¦/=origin >, (/¦if¦/ > (/¦verb¦/ < (/¦be¦|¦to¦/ < /¦ACTIVITY:.*¦/=destination)))
 /¦CONDITION:.*¦/=origin > (/¦be¦|¦do¦/ > (/¦if¦/ > (/¦verb¦/ < /¦ACTIVITY:.*¦/=destination)))
+/¦CONDITION:.*¦/=origin >> (/¦if¦/ < (/¦be¦/ < /¦ACTIVITY:.*¦/=destination))
 #
-/¦CONDITION:.*¦/=origin >> (/¦case¦/ >: (/¦in¦/ > /¦ACTIVITY:.*¦/=destination))
-/¦CONDITION:.*¦/=origin >> (/¦case¦/ >: (/¦in¦/ > (/¦be¦/ < /¦ACTIVITY:.*¦/=destination)))
-#----------- EVENT --------------------------
+#------------------- EVENT to ACTIVITY--------------------------
 /¦EVENT:.*¦/=origin > /¦ACTIVITY:.*¦/=destination
 /¦EVENT:.*¦/=origin >> (/¦verb¦/ << /¦ACTIVITY:.*¦/=destination)
 #
-#---------ACTIVITIES---------------------------
-/¦ACTIVITY:.*¦/=origin < (/¦and¦/ << (/¦ACTIVITY:.*¦/=destination < /¦then¦/ ))
+#---------------------- ACTIVITY or EVENT to many CONDITIONS------------------------
+/¦CONDITION:.*¦/=destination >> (/¦whether¦/ >> /¦ACTIVITY:.*¦|¦EVENT:.*¦/=origin)
+/¦CONDITION:.*¦/=destination >> /¦ACTIVITY:.*¦|¦EVENT:.*¦/=origin < /¦either¦/
+/¦CONDITION:.*¦/=destination >> (/¦or¦/ >> /¦ACTIVITY:.*¦|¦EVENT:.*¦/=origin)
+#-----------------------ACTIVITY/EVENT to many ACTIVITIES-------------------------------
+# we assume "and" means sequential (not parallel)
+/¦ACTIVITY:.*¦|¦EVENT:.*¦/=origin << (/¦ACTIVITY:.*¦/=destination < /¦and¦/)
+/¦ACTIVITY:.*¦/=origin < (/¦and¦/ < /¦ACTIVITY:.*¦/=destination)
+#---paralel?
+#/¦ACTIVITY:.*¦|¦EVENT:.*¦/ << (/¦ACTIVITY:.*¦/ < (/¦and¦/ < /¦ACTIVITY:.*¦/))
 #
-/¦CONDITION:.*¦/=origin >> (/¦if¦/ < (/¦be¦/ < /¦ACTIVITY:.*¦/=destination))
+#-------------------ACTIVITIES to ACTIVITY---------------------------
+/¦ACTIVITY:.*¦/=origin < (/¦and¦/ << (/¦ACTIVITY:.*¦/=destination < /¦then¦/ ))
+/¦ACTIVITY:.*¦/=origin << (/¦and¦/ << (/¦ACTIVITY:.*¦/=destination < /¦then¦/))
+/¦ACTIVITY:.*¦/=origin >> (/¦after¦/ > /¦ACTIVITY.*¦/=destination)
+/¦ACTIVITY:.*¦/=origin >> (/¦after¦/ > (/¦be¦/ < /¦ACTIVITY.*¦/=destination))
+/¦ACTIVITY:.*¦/=destination > (/¦be¦/ > (/¦after¦/ > (/¦ACTIVITY:.*¦/=origin > /¦be¦/)))
+/¦ACTIVITY:.*¦/=origin < (/¦before¦/ < /¦ACTIVITY:*/=destination)
+#
+#---------------------in latter case--------------------------------------------
+#/¦CONDITION:.*¦/=origin >> (/¦case¦/ >: (/¦in¦/ > /¦ACTIVITY:.*¦/=destination))
+#/¦CONDITION:.*¦/=origin >> (/¦case¦/ >: (/¦in¦/ > (/¦be¦/ < /¦ACTIVITY:.*¦/=destination)))
+#----------------- otherwise -----------------
+/¦CONDITION:.*¦/=origin > /¦ACTIVITY:.*¦/=destination
+/¦CONDITION:.*¦/=origin > (/¦be¦/ < /¦ACTIVITY:.*¦/=destination)
+/¦CONDITION:.*¦/=origin > (/¦verb¦/ << (/¦be¦/ < /¦ACTIVITY:.*¦/=destination))
+

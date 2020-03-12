@@ -1,0 +1,53 @@
+T44	Entity 1368 1422	AP with a note and explanatory statement on the docket
+T54	Condition 2010 2044	the bill amount exceeds EUR 20,000
+T76	Entity 536 570	docket and the copy of the invoice
+T41	Condition 1001 1029	all items are marked correct
+T57	Entity 2428 2448	payment instructions
+T83	Entity 1985 2005	approval for payment
+T47	Entity 1694 1713	all inconsistencies
+T48	Entity 1732 1751	copy of the invoice
+T79	Entity 908 927	copy of the invoice
+T81	Entity 2105 2124	copy of the invoice
+T34	Entity 298 316	charging suppliers
+T70	Entity 153 170	visual inspection
+T68	Entity 2354 2370	commercial audit
+T85	Entity 1953 1969	commercial audit
+T37	Entity 376 389	invoice items
+T45	Action 1570 1583	clarification
+T60	Entity 331 343	new instance
+T33	Action 283 293	identifies
+T80	Action 2146 2156	moves back
+T66	Action 2387 2396	completed
+T69	Action 129 138	forwarded
+T77	Action 1031 1040	sent back
+T46	Action 1718 1726	resolved
+T59	Entity 2464 2472	instance
+T65	Action 30 38	receives
+T71	Entity 39 47	invoices
+T88	Entity 2071 2079	it again
+T35	Action 321 328	creates
+T43	Action 1356 1363	rejects
+T36	Action 365 371	checks
+T58	Action 2453 2459	closes
+T78	Action 931 937	passed
+T84	Action 1974 1980	issues
+T56	Action 2422 2427	gives
+T72	Action 394 399	notes
+T86	Action 1943 1948	makes
+T87	Action 2065 2070	check
+T49	Action 1755 1759	sent
+T74	Action 612 616	sent
+R14	Patient Arg1:T46 Arg2:T47
+R15	Patient Arg1:T49 Arg2:T48
+R18	Patient Arg1:T58 Arg2:T59
+R19	Patient Arg1:T56 Arg2:T57
+R20	Patient Arg1:T35 Arg2:T60
+R22	Patient Arg1:T66 Arg2:T68
+R23	Patient Arg1:T69 Arg2:T70
+R24	Sequence Arg1:T65 Arg2:T69
+R25	Patient Arg1:T65 Arg2:T71
+R26	Patient Arg1:T74 Arg2:T76
+R27	Patient Arg1:T78 Arg2:T79
+R28	Patient Arg1:T84 Arg2:T83
+R29	Patient Arg1:T86 Arg2:T85
+R30	Patient Arg1:T87 Arg2:T88

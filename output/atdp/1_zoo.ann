@@ -1,0 +1,80 @@
+T0	Condition 147 190	he wants an individual or family membership 
+T1	Condition 195 228	he wants an individual membership 
+T2	Condition 275 311	he wants a family membership instead 
+T3	Condition 795 816	everything is correct 
+T4	Action 92 97	taken
+T5	Action 238 245	prepare
+T6	Action 323 330	prepare
+T7	Action 405 409	give
+T8	Action 477 487	introduces
+T9	Action 536 541	takes
+T10	Action 617 625	forwards
+T11	Action 705 710	sends
+T12	Action 753 762	processes
+T13	Action 818 825	charges
+T14	Action 880 889	confirmed
+T15	Action 918 923	print
+T16	Action 937 944	deliver
+T17	Action 1006 1011	makes
+T18	Action 1025 1029	mail
+T19	Action 1094 1102	receives
+T20	Action 1120 1122	go
+T21	Entity 118 126	customer
+T27	Entity 458 476	zooclub department
+T30	Entity 686 704	billing department
+T31	Entity 748 752	bank
+T35	Entity 985 1005	marketing department
+T36	Entity 7 14	visitor
+T37	Entity 33 62	member of barcelona_'s_zooclub
+T38	Entity 246 270	his personal information
+T39	Entity 335 346	information
+T40	Entity 415 426	information
+T41	Entity 492 515	visitor personal data
+T42	Entity 546 561	payment request
+T43	Entity 630 651	visitor information
+T44	Entity 715 730	payment request
+T45	Entity 767 786	payment information
+T46	Entity 830 837	payment
+T47	Entity 869 876	payment
+T48	Entity 928 932	card
+T49	Entity 945 947	it
+T50	Entity 1014 1021	request
+T51	Entity 1034 1053	zoo_club magazine
+T52	Entity 1107 1111	card
+T53	Entity 1123 1127	home
+R0	Agent Arg1:T5 Arg2:T21
+R1	Agent Arg1:T6 Arg2:T21
+R2	Agent Arg1:T7 Arg2:T21
+R3	Agent Arg1:T8 Arg2:T27
+R4	Agent Arg1:T9 Arg2:T27
+R5	Agent Arg1:T10 Arg2:T27
+R6	Agent Arg1:T11 Arg2:T30
+R7	Agent Arg1:T12 Arg2:T31
+R8	Agent Arg1:T13 Arg2:T31
+R9	Agent Arg1:T15 Arg2:T27
+R10	Agent Arg1:T16 Arg2:T27
+R11	Agent Arg1:T17 Arg2:T35
+R12	Agent Arg1:T19 Arg2:T36
+R13	Patient Arg1:T4 Arg2:T37
+R14	Patient Arg1:T5 Arg2:T38
+R15	Patient Arg1:T6 Arg2:T39
+R16	Patient Arg1:T7 Arg2:T40
+R17	Patient Arg1:T8 Arg2:T41
+R18	Patient Arg1:T9 Arg2:T42
+R19	Patient Arg1:T10 Arg2:T43
+R20	Patient Arg1:T11 Arg2:T44
+R21	Patient Arg1:T12 Arg2:T45
+R22	Patient Arg1:T13 Arg2:T46
+R23	Patient Arg1:T14 Arg2:T47
+R24	Patient Arg1:T15 Arg2:T48
+R25	Patient Arg1:T16 Arg2:T49
+R26	Patient Arg1:T17 Arg2:T50
+R27	Patient Arg1:T18 Arg2:T51
+R28	Patient Arg1:T19 Arg2:T52
+R29	Patient Arg1:T20 Arg2:T53
+R43	Sequence Arg1:T1 Arg2:T5
+R44	Sequence Arg1:T2 Arg2:T6
+R45	Sequence Arg1:T8 Arg2:T9
+R46	Sequence Arg1:T12 Arg2:T3
+R47	Sequence Arg1:T3 Arg2:T13
+R48	Sequence Arg1:T15 Arg2:T16

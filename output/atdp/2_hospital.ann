@@ -1,0 +1,120 @@
+T0	Condition 158 172	she is healthy 
+T1	Condition 176 220	needs to undertake an additional examination 
+T2	Condition 1342 1377	the sample can be used for analysis 
+T3	Condition 1389 1436	it is contaminated and a new sample is required 
+T4	Condition 670 687	the patient signs 
+T5	Action 31 41	summarised
+T6	Action 101 109	examined
+T7	Action 185 194	undertake
+T8	Action 256 261	fills
+T9	Action 383 389	placed
+T10	Action 424 429	fills
+T11	Action 505 513	includes
+T12	Action 623 630	informs
+T13	Action 691 699	informed
+T14	Action 779 787	arranges
+T15	Action 877 883	taking
+T16	Action 899 907	analysed
+T17	Action 954 962	required
+T18	Action 991 999	prepared
+T19	Action 1048 1056	provided
+T20	Action 1148 1153	sends
+T21	Action 1193 1197	form
+T22	Action 1202 1210	conducts
+T23	Action 1257 1266	receiving
+T24	Action 1302 1311	validates
+T25	Action 1360 1364	used
+T26	Action 1395 1407	contaminated
+T27	Action 1428 1436	required
+T28	Action 1461 1470	performed
+T29	Action 1532 1541	validates
+T30	Action 1607 1612	makes
+T31	Action 1631 1641	prescribes
+T32	Entity 116 136	outpatient physician
+T33	Entity 397 406	physician
+T34	Entity 753 778	delegate of physician
+T35	Entity 1005 1022	nurse of ward
+T36	Entity 1064 1082	outpatient section
+T37	Entity 1093 1107	ward physician
+T38	Entity 1281 1301	physician of lab
+T40	Entity 1476 1514	medical technical assistant of lab
+T41	Entity 1518 1531	lab physician
+T42	Entity 1566 1595	physician from outpatient
+T44	Entity 4 23	examination process
+T45	Entity 59 66	process
+T46	Entity 198 220	additional examination
+T47	Entity 270 286	examination form
+T48	Entity 338 379	examination followup treatment order
+T49	Entity 436 448	request form
+T50	Entity 492 504	request form
+T51	Entity 635 642	patient
+T52	Entity 700 707	consent
+T53	Entity 791 817	appointment of patient
+T54	Entity 886 892	sample
+T55	Entity 886 892	sample
+T56	Entity 963 974	examination
+T57	Entity 963 974	examination
+T58	Entity 1036 1047	information
+T59	Entity 1154 1156	it
+T60	Entity 1185 1192	request
+T61	Entity 1215 1249	followup treatment of patient
+T62	Entity 1271 1277	sample
+T63	Entity 1312 1321	its state
+T64	Entity 1346 1352	sample
+T65	Entity 1389 1391	it
+T66	Entity 1414 1424	new sample
+T67	Entity 1449 1457	analysis
+T68	Entity 1546 1553	result
+T69	Entity 1617 1626	diagnosis
+T70	Entity 1646 1653	therapy
+R0	Agent Arg1:T6 Arg2:T32
+R1	Agent Arg1:T9 Arg2:T33
+R2	Agent Arg1:T14 Arg2:T34
+R3	Agent Arg1:T18 Arg2:T35
+R4	Agent Arg1:T19 Arg2:T36
+R5	Agent Arg1:T20 Arg2:T37
+R6	Agent Arg1:T23 Arg2:T38
+R7	Agent Arg1:T24 Arg2:T38
+R8	Agent Arg1:T28 Arg2:T40
+R9	Agent Arg1:T29 Arg2:T41
+R10	Agent Arg1:T30 Arg2:T42
+R11	Agent Arg1:T31 Arg2:T42
+R12	Patient Arg1:T5 Arg2:T44
+R13	Patient Arg1:T6 Arg2:T45
+R14	Patient Arg1:T7 Arg2:T46
+R15	Patient Arg1:T8 Arg2:T47
+R16	Patient Arg1:T9 Arg2:T48
+R17	Patient Arg1:T10 Arg2:T49
+R18	Patient Arg1:T11 Arg2:T50
+R19	Patient Arg1:T12 Arg2:T51
+R20	Patient Arg1:T13 Arg2:T52
+R21	Patient Arg1:T14 Arg2:T53
+R22	Patient Arg1:T15 Arg2:T54
+R23	Patient Arg1:T16 Arg2:T54
+R24	Patient Arg1:T17 Arg2:T56
+R25	Patient Arg1:T18 Arg2:T56
+R26	Patient Arg1:T19 Arg2:T58
+R27	Patient Arg1:T20 Arg2:T59
+R28	Patient Arg1:T21 Arg2:T60
+R29	Patient Arg1:T22 Arg2:T61
+R30	Patient Arg1:T23 Arg2:T62
+R31	Patient Arg1:T24 Arg2:T63
+R32	Patient Arg1:T25 Arg2:T64
+R33	Patient Arg1:T26 Arg2:T65
+R34	Patient Arg1:T27 Arg2:T66
+R35	Patient Arg1:T28 Arg2:T67
+R36	Patient Arg1:T29 Arg2:T68
+R37	Patient Arg1:T30 Arg2:T69
+R38	Patient Arg1:T31 Arg2:T70
+R51	Sequence Arg1:T6 Arg2:T0
+R52	Sequence Arg1:T6 Arg2:T1
+R53	Sequence Arg1:T23 Arg2:T24
+R54	Sequence Arg1:T24 Arg2:T2
+R55	Sequence Arg1:T2 Arg2:T3
+R56	Sequence Arg1:T28 Arg2:T29
+R57	Sequence Arg1:T30 Arg2:T31
+R58	Sequence Arg1:T4 Arg2:T14
+R110	Conflict Arg1:T0 Arg2:T1
+R111	Conflict Arg1:T0 Arg2:T1
+R112	Conflict Arg1:T2 Arg2:T3
+R113	Conflict Arg1:T2 Arg2:T3

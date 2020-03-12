@@ -1,0 +1,151 @@
+T0	Condition 1232 1253	inconsistencies exist 
+T1	Condition 1001 1029	all items are marked correct 
+T2	Condition 2010 2044	the bill amount exceeds EUR 20,000 
+T3	Action 30 38	receives
+T4	Action 188 196	employee
+T5	Action 252 261	developed
+T6	Action 283 293	identifies
+T7	Action 321 328	creates
+T8	Action 365 371	checks
+T9	Action 376 383	invoice
+T10	Action 394 399	notes
+T11	Action 404 417	corresponding
+T12	Action 453 460	related
+T13	Action 551 555	copy
+T14	Action 571 573	go
+T15	Action 612 616	sent
+T16	Action 667 674	reviews
+T17	Action 706 715	receiving
+T18	Action 766 771	order
+T19	Action 852 856	copy
+T20	Action 931 937	passed
+T21	Action 1015 1021	marked
+T22	Action 1113 1117	move
+T23	Action 1188 1194	marked
+T24	Action 1272 1279	ordered
+T25	Action 1302 1310	expected
+T26	Action 1356 1363	rejects
+T27	Action 1503 1513	statements
+T28	Action 1552 1560	proceede
+T29	Action 1624 1632	consults
+T30	Action 1718 1726	resolved
+T31	Action 1755 1759	sent
+T32	Action 1811 1820	continues
+T33	Action 1833 1840	invoice
+T34	Action 1870 1878	employee
+T35	Action 1879 1887	forwards
+T36	Action 1943 1948	makes
+T37	Action 2065 2070	check
+T38	Action 2125 2134	including
+T39	Action 2146 2151	moves
+T40	Action 2175 2183	employee
+T41	Action 2288 2296	resolved
+T42	Action 2387 2396	completed
+T43	Action 2413 2421	employee
+T44	Action 2422 2427	gives
+T45	Action 2453 2459	closes
+T46	Entity 22 29	acme_ag
+T49	Entity 1336 1355	cost center manager
+T51	Entity 1859 1878	accounting employee
+T52	Entity 39 56	invoice on paper
+T53	Entity 177 187	accounting
+T54	Entity 233 241	software
+T55	Entity 307 316	supplier
+T56	Entity 331 343	new invoice instance
+T57	Entity 376 389	invoice item
+T58	Entity 376 389	invoice item
+T59	Entity 418 444	cost center at acme_ag
+T60	Entity 418 444	cost center at acme_ag
+T61	Entity 461 527	cost center manager for position on separate docket
+T62	Entity 563 570	invoice
+T63	Entity 536 542	docket
+T64	Entity 536 542	docket
+T65	Entity 679 699	content for accuracy
+T66	Entity 720 739	copy of invoice
+T67	Entity 749 759	everything
+T68	Entity 864 871	invoice
+T69	Entity 908 927	copy of invoice
+T70	Entity 1005 1010	item
+T71	Entity 1096 1102	docket
+T72	Entity 1072 1087	copy of invoice
+T73	Entity 1280 1287	product
+T74	Entity 1311 1319	quantity
+T75	Entity 1368 1370	ap
+T76	Entity 1521 1541	cost center manager
+T77	Entity 1570 1583	clarification
+T78	Entity 1637 1657	cost center manager
+T79	Entity 1732 1751	copy of invoice
+T80	Entity 1732 1751	copy of invoice
+T81	Entity 1803 1810	process
+T82	Entity 1833 1846	invoice item
+T83	Entity 1859 1869	accounting
+T84	Entity 1892 1911	copy of invoice
+T85	Entity 1953 1969	commercial audit
+T86	Entity 2071 2073	it
+T87	Entity 2139 2145	docket
+T88	Entity 2105 2124	copy of invoice
+T89	Entity 2164 2174	accounting
+T90	Entity 2259 2275	commercial audit
+T91	Entity 2354 2370	commercial audit
+T92	Entity 2402 2412	accounting
+T93	Entity 2428 2448	payment instruction
+T94	Entity 2464 2472	instance
+R0	Agent Arg1:T3 Arg2:T46
+R1	Agent Arg1:T6 Arg2:T46
+R2	Agent Arg1:T7 Arg2:T46
+R3	Agent Arg1:T26 Arg2:T49
+R4	Agent Arg1:T28 Arg2:T49
+R5	Agent Arg1:T35 Arg2:T51
+R6	Patient Arg1:T3 Arg2:T52
+R7	Patient Arg1:T4 Arg2:T53
+R8	Patient Arg1:T5 Arg2:T54
+R9	Patient Arg1:T6 Arg2:T55
+R10	Patient Arg1:T7 Arg2:T56
+R11	Patient Arg1:T8 Arg2:T57
+R12	Patient Arg1:T9 Arg2:T57
+R13	Patient Arg1:T10 Arg2:T59
+R14	Patient Arg1:T11 Arg2:T59
+R15	Patient Arg1:T12 Arg2:T61
+R16	Patient Arg1:T13 Arg2:T62
+R17	Patient Arg1:T14 Arg2:T63
+R18	Patient Arg1:T15 Arg2:T63
+R19	Patient Arg1:T16 Arg2:T65
+R20	Patient Arg1:T17 Arg2:T66
+R21	Patient Arg1:T18 Arg2:T67
+R22	Patient Arg1:T19 Arg2:T68
+R23	Patient Arg1:T20 Arg2:T69
+R24	Patient Arg1:T21 Arg2:T70
+R25	Patient Arg1:T22 Arg2:T71
+R26	Patient Arg1:T23 Arg2:T72
+R27	Patient Arg1:T24 Arg2:T73
+R28	Patient Arg1:T25 Arg2:T74
+R29	Patient Arg1:T26 Arg2:T75
+R30	Patient Arg1:T27 Arg2:T76
+R31	Patient Arg1:T28 Arg2:T77
+R32	Patient Arg1:T29 Arg2:T78
+R33	Patient Arg1:T30 Arg2:T79
+R34	Patient Arg1:T31 Arg2:T79
+R35	Patient Arg1:T32 Arg2:T81
+R36	Patient Arg1:T33 Arg2:T82
+R37	Patient Arg1:T34 Arg2:T83
+R38	Patient Arg1:T35 Arg2:T84
+R39	Patient Arg1:T36 Arg2:T85
+R40	Patient Arg1:T37 Arg2:T86
+R41	Patient Arg1:T38 Arg2:T87
+R42	Patient Arg1:T39 Arg2:T88
+R43	Patient Arg1:T40 Arg2:T89
+R44	Patient Arg1:T41 Arg2:T90
+R45	Patient Arg1:T42 Arg2:T91
+R46	Patient Arg1:T43 Arg2:T92
+R47	Patient Arg1:T44 Arg2:T93
+R48	Patient Arg1:T45 Arg2:T94
+R55	Sequence Arg1:T6 Arg2:T7
+R56	Sequence Arg1:T8 Arg2:T10
+R57	Sequence Arg1:T17 Arg2:T16
+R58	Sequence Arg1:T20 Arg2:T1
+R59	Sequence Arg1:T0 Arg2:T26
+R60	Sequence Arg1:T33 Arg2:T35
+R61	Sequence Arg1:T42 Arg2:T44
+R62	Sequence Arg1:T44 Arg2:T45
+R63	Sequence Arg1:T1 Arg2:T21
+R64	Sequence Arg1:T2 Arg2:T37

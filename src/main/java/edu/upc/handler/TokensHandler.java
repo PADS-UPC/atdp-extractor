@@ -28,7 +28,8 @@ public class TokensHandler {
 				token.setLemma(jsonObject.get("lemma").toString());
 				token.setTag(jsonObject.get("tag").toString());
 				token.setCtag(jsonObject.get("ctag").toString());
-				token.setPos(jsonObject.get("pos").toString());
+				if (jsonObject.get("pos") != null)
+					token.setPos(jsonObject.get("pos").toString());
 				token.setBegin(Integer.parseInt(jsonObject.get("begin").toString()));
 				token.setEnd(Integer.parseInt(jsonObject.get("end").toString()));
 				if (jsonObject.get("wn") != null)

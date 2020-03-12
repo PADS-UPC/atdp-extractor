@@ -1,0 +1,55 @@
+T0	Action 10 15	sends
+T1	Action 68 76	released
+T2	Action 113 117	part
+T3	Action 158 166	receives
+T4	Action 183 192	retrieves
+T5	Action 244 253	forwarded
+T6	Action 302 308	stored
+T7	Action 328 336	awaiting
+T8	Action 352 356	sent
+T9	Action 392 400	received
+T10	Action 429 438	retrieved
+T11	Action 459 467	attaches
+T12	Action 505 513	expanded
+T13	Action 575 583	receives
+T14	Entity 4 9	party
+T15	Entity 83 109	client_service_back_office
+T17	Entity 316 327	back_office
+T18	Entity 364 370	police
+T20	Entity 551 574	other mc internal staff
+T21	Entity 18 36	warrant possession
+T22	Entity 54 61	warrant
+T23	Entity 125 157	small_claims_registry_operations
+T24	Entity 171 178	request
+T25	Entity 197 205	sct file
+T26	Entity 218 240	sct_warrant_possession
+T27	Entity 281 298	sct physical file
+T28	Entity 339 345	report
+T29	Entity 339 345	report
+T30	Entity 406 425	respective sct file
+T31	Entity 406 425	respective sct file
+T32	Entity 472 488	new sct document
+T33	Entity 514 531	sct physical file
+T34	Entity 588 619	physical sct file out out of scope
+R0	Agent Arg1:T0 Arg2:T14
+R1	Agent Arg1:T3 Arg2:T15
+R2	Agent Arg1:T4 Arg2:T15
+R3	Agent Arg1:T6 Arg2:T17
+R4	Agent Arg1:T8 Arg2:T18
+R5	Agent Arg1:T11 Arg2:T15
+R6	Agent Arg1:T13 Arg2:T20
+R7	Patient Arg1:T0 Arg2:T21
+R8	Patient Arg1:T1 Arg2:T22
+R9	Patient Arg1:T2 Arg2:T23
+R10	Patient Arg1:T3 Arg2:T24
+R11	Patient Arg1:T4 Arg2:T25
+R12	Patient Arg1:T5 Arg2:T26
+R13	Patient Arg1:T6 Arg2:T27
+R14	Patient Arg1:T7 Arg2:T28
+R15	Patient Arg1:T8 Arg2:T28
+R16	Patient Arg1:T9 Arg2:T30
+R17	Patient Arg1:T10 Arg2:T30
+R18	Patient Arg1:T11 Arg2:T32
+R19	Patient Arg1:T12 Arg2:T33
+R20	Patient Arg1:T13 Arg2:T34
+R28	Sequence Arg1:T3 Arg2:T4

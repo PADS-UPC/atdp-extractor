@@ -1,0 +1,69 @@
+T0	Action 30 36	charge
+T1	Action 137 145	performs
+T2	Action 172 182	understand
+T3	Action 307 313	solved
+T4	Action 363 370	handled
+T5	Action 551 558	writing
+T6	Action 575 585	explaining
+T7	Action 634 641	printed
+T8	Action 710 719	performed
+T9	Action 833 839	writes
+T10	Action 842 850	detailed
+T11	Action 937 943	charge
+T12	Action 992 1003	preparation
+T13	Action 1078 1085	written
+T14	Action 1102 1110	prepared
+T15	Action 1125 1130	clerk
+T16	Action 1131 1140	assembles
+T17	Action 1194 1198	sent
+T18	Action 1244 1250	prints
+T19	Action 1268 1276	includes
+T20	Entity 3 23	front_end hw expert
+T22	Entity 561 574	short summary
+T23	Entity 647 656	secretary
+T24	Entity 1116 1130	shipping clerk
+T25	Entity 3 23	front_end hw expert
+T26	Entity 149 162	initial check
+T27	Entity 187 208	nature of problem
+T28	Entity 292 299	problem
+T29	Entity 348 354	repair
+T30	Entity 561 574	short summary
+T31	Entity 590 597	problem
+T32	Entity 618 625	summary
+T33	Entity 679 698	2 different task
+T34	Entity 851 889	report about nature of problem
+T35	Entity 851 889	report about nature of problem
+T36	Entity 911 925	shipping clerk
+T37	Entity 1009 1016	package
+T38	Entity 1062 1068	report
+T39	Entity 1094 1101	package
+T40	Entity 1116 1124	shipping
+T41	Entity 1145 1159	entire package
+T42	Entity 1145 1159	entire package
+T43	Entity 1253 1260	receipt
+T44	Entity 1253 1260	receipt
+R0	Agent Arg1:T1 Arg2:T20
+R1	Agent Arg1:T2 Arg2:T20
+R2	Agent Arg1:T6 Arg2:T22
+R3	Agent Arg1:T7 Arg2:T23
+R4	Agent Arg1:T16 Arg2:T24
+R5	Patient Arg1:T0 Arg2:T25
+R6	Patient Arg1:T1 Arg2:T26
+R7	Patient Arg1:T2 Arg2:T27
+R8	Patient Arg1:T3 Arg2:T28
+R9	Patient Arg1:T4 Arg2:T29
+R10	Patient Arg1:T5 Arg2:T30
+R11	Patient Arg1:T6 Arg2:T31
+R12	Patient Arg1:T7 Arg2:T32
+R13	Patient Arg1:T8 Arg2:T33
+R14	Patient Arg1:T9 Arg2:T34
+R15	Patient Arg1:T10 Arg2:T34
+R16	Patient Arg1:T11 Arg2:T36
+R17	Patient Arg1:T12 Arg2:T37
+R18	Patient Arg1:T13 Arg2:T38
+R19	Patient Arg1:T14 Arg2:T39
+R20	Patient Arg1:T15 Arg2:T40
+R21	Patient Arg1:T16 Arg2:T41
+R22	Patient Arg1:T17 Arg2:T41
+R23	Patient Arg1:T18 Arg2:T43
+R24	Patient Arg1:T19 Arg2:T43

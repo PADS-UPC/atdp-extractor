@@ -34,10 +34,12 @@ public class ActivitiesHandler {
 
 	private LinkedHashMap<String, Activity> fillActivitiesListFromPredicates() throws IOException {
 		for (Entry<String, Predicate> predicate : predicates.entrySet()) {
-			Boolean isNounAction = false;
-			if (tokens.get(predicate.getValue().getHead_token()).getPos().equals("noun"))
-				isNounAction = Utils.isNounAction(tokens.get(predicate.getValue().getHead_token()).getWn(),
-						tokens.get(predicate.getValue().getHead_token()).getLemma());
+			Boolean isNounAction = true;
+			if (Utils.isToApplyPattern()) {
+				if (tokens.get(predicate.getValue().getHead_token()).getPos().equals("noun"))
+					isNounAction = Utils.isNounAction(tokens.get(predicate.getValue().getHead_token()).getWn(),
+							tokens.get(predicate.getValue().getHead_token()).getLemma());
+			}
 			if (tokens.get(predicate.getValue().getHead_token()).getPos().equals("verb") || isNounAction) {
 				Patient patient = null;
 				Agent agent = null;

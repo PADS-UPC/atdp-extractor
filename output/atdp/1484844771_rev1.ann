@@ -1,0 +1,50 @@
+T0	Condition 131 160	it is not possible to find it 
+T1	Condition 662 716	the Vendor is already in the system or the request for 
+T2	Action 72 77	tried
+T3	Action 84 91	located
+T4	Action 153 157	find
+T5	Action 268 275	filling
+T6	Action 341 349	attached
+T7	Action 374 380	putted
+T8	Action 442 450	finished
+T9	Action 457 467	classified
+T10	Action 580 588	finished
+T11	Action 739 747	finished
+T12	Action 772 777	added
+T13	Action 809 818	continues
+T14	Action 840 846	sorted
+T15	Action 907 914	entered
+T16	Action 952 960	finished
+T17	Entity 863 869	amount
+T18	Entity 62 68	vendor
+T19	Entity 101 126	sap system of company
+T20	Entity 158 160	it
+T21	Entity 283 312	new vendor_master_record form
+T22	Entity 330 337	request
+T23	Entity 330 337	request
+T24	Entity 431 438	request
+T25	Entity 451 453	it
+T26	Entity 553 573	maximum 24 hr window
+T27	Entity 717 734	new vendor_record
+T28	Entity 749 763	its sap number
+T29	Entity 801 808	process
+T30	Entity 824 832	invoice
+T31	Entity 889 897	invoice
+T32	Entity 941 948	process
+R0	Agent Arg1:T14 Arg2:T17
+R1	Patient Arg1:T2 Arg2:T18
+R2	Patient Arg1:T3 Arg2:T19
+R3	Patient Arg1:T4 Arg2:T20
+R4	Patient Arg1:T5 Arg2:T21
+R5	Patient Arg1:T6 Arg2:T22
+R6	Patient Arg1:T7 Arg2:T22
+R7	Patient Arg1:T8 Arg2:T24
+R8	Patient Arg1:T9 Arg2:T25
+R9	Patient Arg1:T10 Arg2:T26
+R10	Patient Arg1:T11 Arg2:T27
+R11	Patient Arg1:T12 Arg2:T28
+R12	Patient Arg1:T13 Arg2:T29
+R13	Patient Arg1:T14 Arg2:T30
+R14	Patient Arg1:T15 Arg2:T31
+R15	Patient Arg1:T16 Arg2:T32
+R17	Sequence Arg1:T1 Arg2:T12
