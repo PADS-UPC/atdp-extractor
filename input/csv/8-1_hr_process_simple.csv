@@ -1,0 +1,4 @@
+Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
+1;1;;;0;The process is triggered by the demand of a functional department to fill a post.;0;;;;;;;;;;
+1;1;;;1;The post is advertised, applicants apply, the applications are checked and the post is filled.;3;FALSE;PRECEDENCE;advertise post;apply applicants;PRECEDENCE;advertise post;check applications;PRECEDENCE;advertise post;fill post
+1;1;;;2;The process finishes when the post was filled, precisely through the conclusion of a contract of employment.;1;FALSE;EXISTENCE;fill post;;;;;;;

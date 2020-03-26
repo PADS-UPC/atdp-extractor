@@ -1,0 +1,7 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	The process starts when the SO: Angebot/Auftrag receives a subsidiary order.	1	false	[INIT(A=receive subsidiary order)]	2	2	1	0.5	0.5	0.5
+1	The SO: Angebot/Auftrag prepares goods for shipment and then ships the goods, concurrently with preparing the goods and shipping them, the SO: Angebot/Auftrag prepares invoicing.	2	false	[PRECEDENCE(A=prepare good for shipment, B=prepare good), PRECEDENCE(A=prepare good for shipment, B=ship them)]	6	6	4	0.6666666666666666	0.6666666666666666	0.6666666666666666
+2	In case the customer is subsidiary and the subsidiary relationship is not yet modeled, SO: Address- management adds parent company as invoicing address, then the SO: Angebot/Auftrag create the invoice.	3	true	[PRECEDENCE(A=model subsidiary relationship, B=add parent company), PRECEDENCE(A=model subsidiary relationship, B=invoice address), PRECEDENCE(A=model subsidiary relationship, B=create invoice)]	10	10	8	0.8	0.8	0.8000000000000002
+3	Otherwise if the customer is independent or the subsidiary relationship is already modeled in ERP, the SO: Angebot/Auftrag directly creates the invoice.	1	false	[EXISTENCE(A=the customer is independent or the subsidiary relationship is already modeled in ERP , the SO : Angebot / Auftrag directly creates the invoice . )]	9	2	1	0.5	0.1111111111111111	0.1818181818181818
+4	Finally, the SO: Angebot/Auftrag sends the invoice.	1	false	[EXISTENCE(A=send invoice)]	2	2	1	0.5	0.5	0.5
+				Total	29	22	15	0.682	0.517	0.588

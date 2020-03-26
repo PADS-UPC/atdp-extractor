@@ -1,0 +1,19 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	A claim should be created, before it can be approved.	1	false	[PRECEDENCE(A=create claim, B=approve it)]	3	3	3	1.0	1.0	1.0
+1	A claim must be created, before it is approved.	1	false	[PRECEDENCE(A=create claim, B=approve it)]	3	3	3	1.0	1.0	1.0
+2	When a claim is created, it may be approved.	1	false	[PRECEDENCE(A=create, B=approve it)]	3	3	3	1.0	1.0	1.0
+3	If a claim is created, it can be approved.	1	false	[PRECEDENCE(A=a claim is created , B=approve it)]	3	3	3	1.0	1.0	1.0
+4	They have to create the claim, before they can approve it.	1	false	[PRECEDENCE(A=create claim, B=approve it)]	3	3	3	1.0	1.0	1.0
+5	Only after a claim is created, it is possible to approve the claim.	1	false	[PRECEDENCE(A=create claim, B=approve claim)]	3	3	3	1.0	1.0	1.0
+6	If a claim is approved, then it must have been created first.	1	false	[PRECEDENCE(A=create it, B=a claim is approved )]	3	3	3	1.0	1.0	1.0
+7	To approve a claim, it should be created first.	1	false	[PRECEDENCE(A=create it, B=approve claim)]	3	3	3	1.0	1.0	1.0
+8	A claim can be approved, after it has been created.	1	false	[PRECEDENCE(A=create it, B=approve claim)]	3	3	3	1.0	1.0	1.0
+9	Approving the claim can happen at anytime, unless it still needs to be created.	1	false	[EXISTENCE(A=happen)]	3	2	0	0.0	0.0	NaN
+10	Creation of the claim is required, before it can be approved.	1	false	[PRECEDENCE(A=creation, B=approve it)]	3	3	3	1.0	1.0	1.0
+11	The creation of the claim is a condition for the approval of the claim.	1	false	[PRECEDENCE(A=creation, B=approval claim)]	3	3	3	1.0	1.0	1.0
+12	Only after the creation of a claim, the approval of the claim is possible.	1	false	[PRECEDENCE(A=creation, B=approval claim)]	3	3	3	1.0	1.0	1.0
+13	When approval of the claim occurs, creation of the claim must have preceded.	1	false	[PRECEDENCE(A=creation, B=approval claim)]	3	3	3	1.0	1.0	1.0
+14	If approval of the claim occurs, then creation of the claim must have been carried out first.	1	false	[PRECEDENCE(A=approval of the claim occurs , , B=creation)]	3	3	1	0.3333333333333333	0.3333333333333333	0.3333333333333333
+15	The approval of the claim requires that the creation of the claim occurs before it.	1	false	[PRECEDENCE(A=occur creation of claim, B=approval claim)]	3	3	3	1.0	1.0	1.0
+16	The approval of the claim should be preceded by the creation of the claim.	1	false	[PRECEDENCE(A=creation, B=approval claim)]	3	3	3	1.0	1.0	1.0
+				Total	51	50	46	0.92	0.902	0.911

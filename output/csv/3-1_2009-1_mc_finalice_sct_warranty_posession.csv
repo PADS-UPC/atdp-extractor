@@ -1,0 +1,9 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	The party sends a warrant possession request asking a warrant to be released.	1	false	[EXISTENCE(A=send warrant possession)]	2	2	2	1.0	1.0	1.0
+1	The Client Service Back Office as part of the Small Claims Registry Operations receives the request and retrieves the SCT file.	1	false	[PRECEDENCE(A=receive request, B=retrieve sct file)]	2	3	0	0.0	0.0	NaN
+2	Then, the SCT Warrant Possession is forwarded to Queensland Police.	1	false	[EXISTENCE(A=forward sct_warrant_possession)]	2	2	2	1.0	1.0	1.0
+3	The SCT physical file is stored by the Back Office awaiting a report to be sent by the Police.	1	false	[EXISTENCE(A=store sct physical file)]	2	2	2	1.0	1.0	1.0
+4	When the report is received, the respective SCT file is retrieved.	1	false	[PRECEDENCE(A=receive respective sct file, B=retrieve respective sct file)]	2	3	0	0.0	0.0	NaN
+5	Then, Back Office attaches the new SCT document, and stores the expanded SCT physical file.	1	false	[PRECEDENCE(A=attach new sct document, B=expand sct physical file)]	3	3	2	0.6666666666666666	0.6666666666666666	0.6666666666666666
+6	After that, some other MC internal staff receives the physical SCT file (out of scope).	1	false	[EXISTENCE(A=receive physical sct file out out of scope)]	2	2	2	1.0	1.0	1.0
+				Total	15	17	10	0.588	0.667	0.625

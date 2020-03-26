@@ -1,32 +1,9 @@
-T0	Action 15 24	triggered
-T1	Action 32 38	demand
-T2	Action 69 73	fill
-T3	Action 95 105	advertised
-T4	Action 118 123	apply
-T5	Action 146 153	checked
-T6	Action 170 176	filled
-T7	Action 218 224	filled
-T8	Action 248 258	conclusion
-T9	Action 264 272	contract
-T10	Entity 32 54	demand of functional
-T11	Entity 4 11	process
-T12	Entity 44 65	functional department
-T13	Entity 76 80	post
-T14	Entity 87 91	post
-T15	Entity 107 117	applicant
-T16	Entity 129 141	application
-T17	Entity 162 166	post
-T18	Entity 183 190	process
-T19	Entity 264 286	contract of employment
-T20	Entity 276 286	employment
-R0	Agent Arg1:T0 Arg2:T10
-R1	Patient Arg1:T0 Arg2:T11
-R2	Patient Arg1:T1 Arg2:T12
-R3	Patient Arg1:T2 Arg2:T13
-R4	Patient Arg1:T3 Arg2:T14
-R5	Patient Arg1:T4 Arg2:T15
-R6	Patient Arg1:T5 Arg2:T16
-R7	Patient Arg1:T6 Arg2:T17
-R8	Patient Arg1:T7 Arg2:T18
-R9	Patient Arg1:T8 Arg2:T19
-R10	Patient Arg1:T9 Arg2:T20
+T0	Action 95 105	advertised
+T1	Action 118 123	apply
+T2	Action 170 176	filled
+T3	Entity 87 91	post
+T4	Entity 107 117	applicant
+T5	Entity 162 166	post
+R0	Patient Arg1:T0 Arg2:T3
+R1	Patient Arg1:T1 Arg2:T4
+R2	Patient Arg1:T2 Arg2:T5

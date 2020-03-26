@@ -1,0 +1,42 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	The intake workflow starts with a notice by telephone at the secretarial office of the mental health care institute.	0	false	[]	0	0	0	0.0	NaN	NaN
+1	This notice is done by the family doctor of somebody who is in need of mental treatment.	0	false	[]	0	0	0	0.0	NaN	NaN
+2	The secretarial worker inquires after the name and residence of the patient.	1	false	[EXISTENCE(A=inquire name of patient)]	2	2	2	1.0	1.0	1.0
+3	On the basis of this information, the doctor is put through to the nursing officer responsible for the part of the region that the patient lives in.	1	false	[EXISTENCE(A=put doctor)]	2	2	2	1.0	1.0	1.0
+4	The nursing officer makes a full inquiry into the mental, health, and social state of the patient in question.	1	false	[EXISTENCE(A=make full inquiry into mental health social state of patient in question)]	2	2	2	1.0	1.0	1.0
+5	This information is recorded on a registration form.	1	false	[EXISTENCE(A=record information)]	2	2	2	1.0	1.0	1.0
+6	At the end of the conversation, this form is handed in at the secretarial office of the institute.	1	false	[END(A=hand form)]	2	2	1	0.5	0.5	0.5
+7	Here, the information on the form is stored in the information system and subsequently printed.	1	false	[PRECEDENCE(A=store information on form, B=print information on form)]	3	3	3	1.0	1.0	1.0
+8	For new patients, a patient file is created.	1	false	[EXISTENCE(A=create patient file)]	3	2	0	0.0	0.0	NaN
+9	The registration form as well as the print from the information system are stored in the patient file.	1	false	[EXISTENCE(A=store registration form)]	3	2	1	0.5	0.3333333333333333	0.4
+10	Patient files are kept at the secretarial office and may not leave the building.	1	true	[PRECEDENCE(A=keep patient file, B=leave building)]	4	4	4	1.0	1.0	1.0
+11	At the secretarial office, two registration cards are produced for respectively the future first and second intaker of the patient.	1	false	[EXISTENCE(A=produce 2 registration card)]	0	2	0	0.0	NaN	NaN
+12	The registration card contains a set of basic patient data.	1	false	[EXISTENCE(A=contain set of basic patient)]	0	2	0	0.0	NaN	NaN
+13	The new patient is added on the list of new notices.	1	false	[EXISTENCE(A=add new patient)]	0	2	0	0.0	NaN	NaN
+14	Halfway the week, at Wednesday, a staff meeting of the entire medical team takes place.	1	false	[EXISTENCE(A=take place)]	0	2	0	0.0	NaN	NaN
+15	The medical team consists of social-medical workers, physicians, and a psychiatrist.	1	false	[EXISTENCE(A=consist social_medical physician worker)]	0	2	0	0.0	NaN	NaN
+16	At this meeting, the team-leader assigns all new patients on the list of new notices to members of the team.	1	false	[EXISTENCE(A=assign new patient on list of new)]	0	2	0	0.0	NaN	NaN
+17	Each patient will be assigned to a social-medical worker, who will act as the first intaker of the patient.	1	false	[EXISTENCE(A=assign patient)]	2	2	2	1.0	1.0	1.0
+18	One of the physicians will act as the second intaker.	1	false	[EXISTENCE(A=act 2 in_taker)]	0	2	0	0.0	NaN	NaN
+19	In assigning intakers, the teamleader takes into account their expertise, the region they are responsible for, earlier contacts they might have had with the patient, and their case load.	1	false	[EXISTENCE(A=take account their region expertise)]	2	2	2	1.0	1.0	1.0
+20	The assignments are recorded on an assignment list which is handed to the secretarial office.	1	false	[EXISTENCE(A=record assignment)]	2	2	2	1.0	1.0	1.0
+21	For each new assignment, it is also determined whether the medical file of the patient is required.	1	false	[PRECEDENCE(A=the medical file of the patient is required , B=determine)]	2	3	1	0.3333333333333333	0.5	0.4
+22	This information is added to the assignment list.	1	false	[EXISTENCE(A=add information)]	2	2	2	1.0	1.0	1.0
+23	The secretarial office stores the assignment of each patient of the assignment list in the information system.	0	false	[]	2	0	0	0.0	0.0	NaN
+24	It passes the produced registration cards to the first and second intaker of each newly assigned patient.	1	false	[PRECEDENCE(A=pass registration card, B=assign patient)]	0	3	0	0.0	NaN	NaN
+25	An intaker keeps this registration with him at times when visiting the patient and in his close proximity when he is at the office.	2	false	[PRECEDENCE(A=keep registration, B=visit patient), PRECEDENCE(A=keep registration, B=be office)]	0	6	0	0.0	NaN	NaN
+26	For each patient for which the medical file is required, the secretarial office prepares and sends a letter to the family doctor of the patient, requesting for a copy of the medical file.	1	false	[PRECEDENCE(A=send letter, B=request copy of medical)]	9	3	1	0.3333333333333333	0.1111111111111111	0.16666666666666666
+27	As soon as this copy is received, the secretarial office will inform the second intaker and add the copy to the patient file.	2	false	[RESPONSE(A=receive copy, B=inform 2 in_taker), PRECEDENCE(A=receive copy, B=add copy)]	3	6	1	0.16666666666666666	0.3333333333333333	0.2222222222222222
+28	The first intaker plans a meeting with the patient as soon as this is possible.	1	false	[PRECEDENCE(A=plan meeting with patient, B=be possible)]	2	3	1	0.3333333333333333	0.5	0.4
+29	During the first meeting, the patient is examined using a standard checklist which is filled out.	1	false	[EXISTENCE(A=examine patient)]	2	2	2	1.0	1.0	1.0
+30	Additional observations are registered in a personal notebook.	1	false	[EXISTENCE(A=register additional observation)]	2	2	2	1.0	1.0	1.0
+31	After a visit, the first intaker puts a copy of these notes in the file of a patient.	1	false	[EXISTENCE(A=put copy of note)]	0	2	0	0.0	NaN	NaN
+32	The standard checklist is also added to the patient’s file.	1	false	[EXISTENCE(A=add standard checklist)]	2	2	2	1.0	1.0	1.0
+33	The second intaker plans the first meeting only after the medical information of the physician if required has been received.	1	false	[PRECEDENCE(A=required , B=plan 1 meeting)]	2	3	0	0.0	0.0	NaN
+34	Physicians use dictaphones to record their observations made during meetings with patients.	1	false	[EXISTENCE(A=use dictaphone)]	2	2	2	1.0	1.0	1.0
+35	The secretarial office types out these tapes, after which the information is added to the patient file.	1	false	[EXISTENCE(A=add tape)]	2	2	2	1.0	1.0	1.0
+36	As soon as the meetings of the first and second intaker with the patient have taken place, the secretarial office puts the patient on the list of patients that reach this status.	1	false	[PRECEDENCE(A=take place, B=put patient)]	0	3	0	0.0	NaN	NaN
+37	For the staff meeting on Wednesday, they provide the team-leader with a list of these patients.	1	false	[EXISTENCE(A=provide team_leader)]	0	2	0	0.0	NaN	NaN
+38	For each of these patients, the first and second intaker together with the team-leader and the attending psychiatrist formulate a treatment plan.	1	false	[EXISTENCE(A=formulate treatment plan)]	2	2	2	1.0	1.0	1.0
+39	This treatment plan formally ends the intake procedure.	1	false	[END(A=end intake procedure)]	2	2	2	1.0	1.0	1.0
+				Total	65	91	43	0.473	0.662	0.551

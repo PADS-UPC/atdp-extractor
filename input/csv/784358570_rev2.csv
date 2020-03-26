@@ -1,0 +1,12 @@
+Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
+1;1;;;0;The process starts by reviewing the order.;1;FALSE;EXISTENCE;review order;;;;;;;
+1;1;;;1;The staff should check if all the requested items are available.;1;FALSE;EXISTENCE;check staff;;;;;;;
+1;1;;;2;If something is missing, the staff has to inform customer about a potential delay and order the missing products.;3;FALSE;SUCCESSION;something is missing;inform customer;PRECEDENCE;something is missing;order products;PRECEDENCE;inform customer;order products
+1;1;;;3;In the exceptional case of a discontinued item, the customer should be informed about the not longer available items.;1;TRUE;ABSENCE;inform available items;;;;;;;
+1;1;;;4;After waiting an average of x days for the delivery, the staff should check again if all products are on store.;0;;;;;;;;;;
+1;1;;;5;If everything is OK, then the staff recollects all products and prepare a package.;3;FALSE;PRECEDENCE;everything is OK;recollect products;PRECEDENCE;everything is OK;prepare package;PRECEDENCE;recollect products;prepare package
+1;1;;;6;The courier is then informed about the pre-processed package.;1;FALSE;EXISTENCE;inform pre-processed package;;;;;;;
+1;1;;;7;The courier company informs the client about a potential delay until there are enough human resources to process the delivery.;1;FALSE;RESPONSE;inform delay;enough human resources to process the delivery;;;;;;
+1;1;;;8;Then, the package is picked up by the designed driver.;1;FALSE;EXISTENCE;pick up package;;;;;;;
+1;1;;;9;A centralized service decides the best route to deliver all driver's packages.;1;FALSE;EXISTENCE;decide best route to deliver;;;;;;;
+1;1;;;10;Once the driver delivers the package, she should update the system so all stakeholders are notified.;1;FALSE;SUCCESSION;deliver package;update system;;;;;;

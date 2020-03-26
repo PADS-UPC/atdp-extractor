@@ -12,7 +12,6 @@ import edu.stanford.nlp.trees.tregex.TregexMatcher;
 import edu.stanford.nlp.trees.tregex.TregexPattern;
 import edu.upc.entities.Action;
 import edu.upc.entities.Activity;
-import edu.upc.entities.Patient;
 import edu.upc.entities.Token;
 import edu.upc.utils.ActionType;
 import edu.upc.utils.FilesUrl;
@@ -22,6 +21,17 @@ public class PatternsHandler {
 	private LinkedHashMap<String, Activity> activitiesList;
 	private LinkedHashMap<String, Token> tokens;
 	private List<Tree> trees;
+	private String beginToken = "";
+	private String endToken = "";
+	private ArrayList<String> subtreeLimits = new ArrayList<String>() {
+		private static final long serialVersionUID = 1L;
+		{
+			add(".");
+			add(",");
+			add("or");
+			add("either");
+		}
+	};
 
 	public PatternsHandler(LinkedHashMap<String, Token> tokens, List<Tree> trees,
 			LinkedHashMap<String, Activity> activitiesList) throws IOException {
@@ -45,34 +55,24 @@ public class PatternsHandler {
 
 		patterns = Utils.readPatternFile(FilesUrl.REMOVE_UNDER_CONDITION_PATTERNS_FILE.toString());
 		if (Utils.isToApplyPattern())
-			removeActionsUnderConditions(patterns);
+			patternExecutor(patterns, null);
 
 		patterns = Utils.readPatternFile(FilesUrl.EVENT_PATTERNS_FILE.toString());
 		if (Utils.isToApplyPattern())
-			genericPatterExecutor(patterns, ActionType.EVENT);
+			patternExecutor(patterns, ActionType.EVENT);
 
-		patterns = Utils.readPatternFile(FilesUrl.VERBS_TO_REMOVE_PATTERNS_FILE.toString());
-		removeVerbs(patterns);
-		if (Utils.isToApplyPattern())
-			removeActionWhoseObjectIsItsParentNode();// fix parser error
-		if (Utils.isToApplyPattern())
-			removeActionsAfterTO();
+		patterns = Utils.readPatternFile(FilesUrl.WEAK_VERBS_PATTERNS_FILE.toString());
+		removeWeakVerbs(patterns);
 
 		patterns = Utils.readPatternFile(FilesUrl.ACTIVITY_PATTERNS_FILE.toString());
 		if (Utils.isToApplyPattern())
-			genericPatterExecutor(patterns, ActionType.ACTIVITY);
-
-		if (Utils.isToApplyPattern())
-			removeActionsUnderActivity();
+			patternExecutor(patterns, ActionType.ACTIVITY);
 
 		patterns = Utils.readPatternFile(FilesUrl.REMOVE_ACTIVITY_FILE.toString());
 		if (Utils.isToApplyPattern())
-			removeActivities(patterns);
+			patternExecutor(patterns, ActionType.ACTIVITY);
 
 		changeAllActionsToActivity();
-
-		if (Utils.isToApplyPattern())
-			removeActivitiesWithProcessObject();
 
 		patterns = Utils.readPatternFile(FilesUrl.SEQUENCE_PATTERNS_FILE.toString());
 		sequencePatterExecutor(patterns);
@@ -82,99 +82,51 @@ public class PatternsHandler {
 
 	}
 
-	private void removeActivitiesWithProcessObject() throws IOException {
-		ArrayList<String> list = new ArrayList<String>();
-		for (Entry<String, Activity> activity : activitiesList.entrySet()) {
-			if (activity.getValue().getPatient() != null) {
-				String token = activity.getValue().getPatient().getId();
-				if (tokens.get(token).getLemma().equals("process")) {
-					System.out.println("-> " + activity.getValue().getId() + " - "
-							+ tokens.get(activity.getValue().getId()).getLemma() + " - "
-							+ activity.getValue().getPatient().getShortText());
-					if (!tokens.get(activity.getValue().getId()).getLemma().equals("examine"))
-						list.add(activity.getValue().getId());
-					else
-						System.out.println("found");
-				}
-			}
-		}
-		for (int i = 0; i < list.size(); i++) {
-			activitiesList.remove(list.get(i));
-		}
-		TreesHandler.refreshTree(trees, activitiesList, tokens);
-	}
-
-	private void removeActionsUnderActivity() throws IOException {
-		System.out.println("--> Removing ACTIONS under main ACTIVITY after AND/OR, and update ActivitiesList");
-		String patternStr = "/¦ACTION:.*¦/=toRemove >> (/¦ACTIVITY:.*¦/ > /¦and¦|¦or¦/)";
-		applyPatternToRemove(patternStr);
-
-	}
-
-	private void removeActionsAfterTO() throws IOException {
-		System.out.println("--> Removing ACTIONS under TO, and update ActivitiesList");
-		String patternStr = "/¦*:.*¦/=toRemove >> (/¦to¦/ > /¦ACTION:.*¦/=result)";
-		applyPatternToRemove(patternStr);
-	}
-
-	private void removeActionWhoseObjectIsItsParentNode() throws IOException {
-		// Fix parser error
-		String patternStr = "/¦*:.*¦/=toRemove > /¦noun¦/=object";
-		TregexPattern pattern = TregexPattern.compile(patternStr);
-		for (int i = 0; i < trees.size(); i++) {
-			TregexMatcher matcher = pattern.matcher(trees.get(i));
-			while (matcher.findNextMatchingNode()) {
-				Tree tToRemove = matcher.getNode("toRemove");
-				String removeToken = Utils.getTokenFromNode(tToRemove.label().value());
-				String objectToken = Utils.getTokenFromNode(matcher.getNode("object").label().value());
-				if (activitiesList.containsKey(removeToken)) {
-					if (!hasChildren(tToRemove, trees.get(i))) {
-						Patient patient = new Patient();
-						patient = activitiesList.get(removeToken).getPatient();
-						if (patient.getId().equals(objectToken))
-							activitiesList.remove(Utils.getTokenFromNode(tToRemove.label().value()));
+	private void patternExecutor(ArrayList<String> patternStrList, ActionType role) throws IOException {
+		if (role != null)
+			System.out.println("--> Identify " + role.toString().toUpperCase() + " and update ActivitiesList");
+		for (String patternStr : patternStrList) {
+			TregexPattern pattern = TregexPattern.compile(patternStr);
+			for (int i = 0; i < trees.size(); i++) {
+				TregexMatcher matcher = pattern.matcher(trees.get(i));
+				while (matcher.findNextMatchingNode()) {
+					Tree tResult = matcher.getNode("result");
+					Tree tToRemove = matcher.getNode("toRemove");
+					Tree tCondition = matcher.getNode("condition");
+					if (tResult != null) {
+						String tokenResult = Utils.getTokenFromNode(tResult.label().value());
+						if (activitiesList.containsKey(tokenResult)
+								&& activitiesList.get(tokenResult).getRole() == ActionType.ACTION) {
+							if (role != null)
+								activitiesList.get(tokenResult).setRole(role);
+						}
+					}
+					if (tToRemove != null) {
+						String tokenTremove = Utils.getTokenFromNode(tToRemove.label().value());
+						if (activitiesList.containsKey(tokenTremove)) {
+							activitiesList.remove(tokenTremove);
+						}
+					}
+					if (tResult != null && tCondition != null) {
+						String tokenResult = Utils.getTokenFromNode(tResult.label().value());
+						String conditionToken = Utils.getTokenFromNode(tCondition.label().value());
+						activitiesList.get(tokenResult).setPattern(tokens.get(conditionToken).getLemma());
 					}
 				}
 			}
+			TreesHandler.refreshTree(trees, activitiesList, tokens);
 		}
-		TreesHandler.refreshTree(trees, activitiesList, tokens);
+
 	}
 
-	private boolean hasChildren(Tree tToRemove, Tree tree) {
-		String patternStr = "/¦.*/=result > /¦" + Utils.getTokenFromNode(tToRemove.label().value()) + "¦/";
-		TregexPattern pattern = TregexPattern.compile(patternStr);
-		TregexMatcher matcher = pattern.matcher(tree);
-		while (matcher.findNextMatchingNode()) {
-			return true;
-		}
-		return false;
-	}
-
-	private void removeVerbs(ArrayList<String> patterns) throws IOException {
+	private void removeWeakVerbs(ArrayList<String> verbsList) throws IOException {
 		System.out.println("--> Removing VERBS that are not actions and update ActivitiesList");
-		for (String patternStr : patterns) {
-			patternStr = "/¦" + patternStr + "¦.*¦ACTION:.*¦/=toRemove";
-			applyPatternToRemove(patternStr);
+		ArrayList<String> patternsList = new ArrayList<String>();
+		for (String verb : verbsList) {
+			patternsList.add("/" + Utils.separator + verb + Utils.separator + ".*" + Utils.separator + "ACTION:.*"
+					+ Utils.separator + "/=toRemove");
 		}
-	}
-
-	private void removeActionsUnderConditions(ArrayList<String> patterns) throws IOException {
-		System.out.println("--> Removing all actions under CONDITIONS and update ActivitiesList");
-		for (String patternStr : patterns) {
-			applyPatternToRemove(patternStr);
-		}
-	}
-
-	private void applyPatternToRemove(String patternStr) throws IOException {
-		TregexPattern pattern = TregexPattern.compile(patternStr);
-		for (int i = 0; i < trees.size(); i++) {
-			TregexMatcher matcher = pattern.matcher(trees.get(i));
-			while (matcher.findNextMatchingNode()) {
-				Tree tToRemove = matcher.getNode("toRemove");
-				activitiesList.remove(Utils.getTokenFromNode(tToRemove.label().value()));
-			}
-		}
-		TreesHandler.refreshTree(trees, activitiesList, tokens);
+		patternExecutor(patternsList, null);
 	}
 
 	private void changeAllActionsToActivity() throws IOException {
@@ -201,13 +153,12 @@ public class PatternsHandler {
 					Integer begin = tokens.get(resultToken).getBegin();
 					Integer end = tokens.get(resultToken).getEnd();
 					String text = tokens.get(resultToken).getLemma();
-					
 					Action action = new Action(resultToken, text, begin, end);
 					Activity activity = new Activity(resultToken, null, action, null);
 					activity.setRole(role);
 					activitiesList.put(resultToken, activity);
-					TreesHandler.refreshTree(trees, activitiesList, tokens);
 				}
+				TreesHandler.refreshTree(trees, activitiesList, tokens);
 			}
 		}
 	}
@@ -243,13 +194,16 @@ public class PatternsHandler {
 						activity.setRole(role);
 						activitiesList.put(resultToken, activity);
 						// find Agent
-						String patternStr2 = "/¦*:.*¦/=result >> /¦" + resultToken + "¦/";
+						String patternStr2 = "/" + Utils.separator + "*:.*" + Utils.separator + "/=result >> /"
+								+ Utils.separator + resultToken + Utils.separator + "/";
 						TregexPattern pattern2 = TregexPattern.compile(patternStr2);
 						TregexMatcher matcher2 = pattern2.matcher(trees.get(i));
 						while (matcher2.findNextMatchingNode()) {
 							Tree tResult2 = matcher2.getNode("result");
 							String resultToken2 = Utils.getTokenFromNode(tResult2.label().value());
 							if (activitiesList.containsKey(resultToken2)) {
+								activitiesList.get(resultToken).getAction()
+										.setMainVerbLemma(tokens.get(resultToken2).getLemma());
 								if (activitiesList.get(resultToken2).getAgent() != null)
 									activitiesList.get(resultToken)
 											.setAgent(activitiesList.get(resultToken2).getAgent());
@@ -268,24 +222,11 @@ public class PatternsHandler {
 		}
 	}
 
-	private String beginToken = "";
-	private String endToken = "";
-	private ArrayList<String> subtreeLimits = new ArrayList<String>() {
-		private static final long serialVersionUID = 1L;
-
-		{
-			add(".");
-			add(",");
-			add("or");
-			add("either");
-		}
-	};
-
 	private ArrayList<String> getActionInformation(String tokenToStart, Tree tree, String conditionLemma) {
 		String text = "";
 		beginToken = tokenToStart;
 		endToken = tokenToStart;
-		getFirstLastNode(tree, conditionLemma);
+		getFirstOrLastNode(tree, conditionLemma);
 		String[] begin = beginToken.split("\\.");
 		String[] end = endToken.split("\\.");
 		for (int i = Integer.parseInt(begin[1]); i <= Integer.parseInt(end[1]); i++) {
@@ -298,21 +239,21 @@ public class PatternsHandler {
 		return results;
 	}
 
-	private void getFirstLastNode(Tree tree, String conditionLemma) {
-		String resultToken = Utils.getTokenFromNode(tree.value());
+	private void getFirstOrLastNode(Tree treeResult, String conditionLemma) {
+		String resultToken = Utils.getTokenFromNode(treeResult.value());
 		Integer value = Integer.parseInt(resultToken.split("\\.")[1]);
 		if (value < Integer.parseInt(beginToken.split("\\.")[1]))
 			beginToken = resultToken;
 		if (value > Integer.parseInt(endToken.split("\\.")[1]))
 			endToken = resultToken;
-		Iterator<?> treeIterator = tree.getChildrenAsList().iterator();
+		Iterator<?> treeIterator = treeResult.getChildrenAsList().iterator();
 		while (treeIterator.hasNext()) {
 			Tree tResult = (Tree) treeIterator.next();
 			if (!conditionLemma.equals("if")) {
 				if (subtreeLimits.contains(tokens.get(Utils.getTokenFromNode(tResult.value())).getLemma()))
 					return;
 			}
-			getFirstLastNode(tResult, conditionLemma);
+			getFirstOrLastNode(tResult, conditionLemma);
 		}
 	}
 
@@ -375,79 +316,6 @@ public class PatternsHandler {
 			}
 		}
 		return destinationToken;
-	}
-
-	private void genericPatterExecutor(ArrayList<String> patternStrList, ActionType role) throws IOException {
-		System.out.println("--> Identify " + role.toString().toUpperCase() + " and update ActivitiesList");
-		String token = "";
-		for (String patternStr : patternStrList) {
-			TregexPattern pattern = TregexPattern.compile(patternStr);
-			for (int i = 0; i < trees.size(); i++) {
-				TregexMatcher matcher = pattern.matcher(trees.get(i));
-				while (matcher.findNextMatchingNode()) {
-					Tree tActivity = matcher.getNode("result");
-					if (tActivity == null)
-						return;
-					Tree tCondition = matcher.getNode("condition");
-					Tree tToRemove = matcher.getNode("toRemove");
-					token = Utils.getTokenFromNode(tActivity.label().value());
-					if (activitiesList.containsKey(token) && activitiesList.get(token).getRole() == ActionType.ACTION) {
-						activitiesList.get(token).setRole(role);
-						if (tCondition != null) {
-							String conditionToken = Utils.getTokenFromNode(tCondition.label().value());
-							activitiesList.get(token).setPattern(tokens.get(conditionToken).getLemma());
-						}
-						if (tToRemove != null) {
-							String tokenToRemove = Utils.getTokenFromNode(tToRemove.label().value());
-							activitiesList.remove(tokenToRemove);
-						}
-						TreesHandler.refreshTree(trees, activitiesList, tokens);
-						i--;
-						break;
-					}
-				}
-			}
-		}
-
-	}
-
-	private void removeActivities(ArrayList<String> patternStrList) throws IOException {
-		ArrayList<String> listToRemove = new ArrayList<String>();
-		for (String patternStr : patternStrList) {
-			TregexPattern pattern = TregexPattern.compile(patternStr);
-			for (int i = 0; i < trees.size(); i++) {
-				TregexMatcher matcher = pattern.matcher(trees.get(i));
-				Tree tResult = null;
-				while (matcher.findNextMatchingNode()) {
-					// if (tActivity == null)
-					tResult = matcher.getNode("result");
-					Tree tToRemove = matcher.getNode("toRemove");
-					if (tResult != null) {
-						String tokenResult = Utils.getTokenFromNode(tResult.label().value());
-						if (activitiesList.containsKey(tokenResult)
-								&& activitiesList.get(tokenResult).getRole() == ActionType.ACTION) {
-							activitiesList.get(tokenResult).setRole(ActionType.ACTIVITY);
-							if (tToRemove != null) {
-								String tokenToRemove = Utils.getTokenFromNode(tToRemove.label().value());
-								if (activitiesList.containsKey(tokenToRemove)) {
-									listToRemove.add(tokenToRemove);
-								}
-							}
-						}
-					} else if (tToRemove != null) {
-						String tokenToRemove = Utils.getTokenFromNode(tToRemove.label().value());
-						if (activitiesList.containsKey(tokenToRemove)) {
-							activitiesList.remove(tokenToRemove);
-						}
-					}
-				}
-
-				for (int j = 0; j < listToRemove.size(); j++) {
-					activitiesList.remove(listToRemove.get(j));
-				}
-			}
-		}
-		TreesHandler.refreshTree(trees, activitiesList, tokens);
 	}
 
 	public LinkedHashMap<String, Activity> getActivitiesList() {

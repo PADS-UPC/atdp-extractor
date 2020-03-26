@@ -1,0 +1,10 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	An order to cash process starts when a customer order is received.	1	false	[INIT(A=receive customer order)]	0	2	0	0.0	NaN	NaN
+1	After the order has been processed, it is send to the warehouse.	0			3	0	0	0	0	0
+2	The warehouse employees determine the parts required to produce the requested items.	1	false	[PRECEDENCE(A=determine part, B=produce item)]	2	3	1	0.3333333333333333	0.5	0.4
+3	If any parts are not available in the warehouse, these are ordered.	1	true	[PRECEDENCE(A=any parts are not available in the warehouse , B=order these)]	4	4	4	1.0	1.0	1.0
+4	Once all necessary parts are available, production will start.	1	false	[INIT(A=be necessary part)]	0	2	0	0.0	NaN	NaN
+5	After production, quality checks will be performed.	1	false	[EXISTENCE(A=perform quality check)]	2	2	2	1.0	1.0	1.0
+6	If the production process has finished, products will be packaged and labeled, before returning to the warehouse.	0			6	0	0	0	0	0
+7	Finally, sales will be informed about the completed production and the product can be sold to the customer.	1	false	[PRECEDENCE(A=inform sale, B=sell product)]	3	3	3	1.0	1.0	1.0
+				Total	20	16	10	0.625	0.5	0.556

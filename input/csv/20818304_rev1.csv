@@ -1,0 +1,5 @@
+Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
+1;1;;;0;The credit company collects the credit information from the customer, If the requested amount is greater than 1M$ an approval must be requested.;2;FALSE;RESPONSE;collect credit information;the requested amount is greater than 1M$;SUCCESSION;the requested amount is greater than 1M$;request approval;;;
+1;1;;;1;If the requested amount is lower or equal to 1M$ the company assess the risk of the credit.;1;FALSE;PRECEDENCE;the requested amount is lower or equal to 1M$;assess risk;;;;;;
+1;1;;semicolon to comma;2;After the assessment, if the risk is high, an approval must be requested, but if the risk is low the credit is accepted.;3;FALSE;SUCCESSION;the risk is high;request approval;NONCOOCCURRENCE;the risk is high;the risk is low;PRECEDENCE;the risk is low;accept credit
+1;1;;semicolon to comma;3;After the approval request, the credit could be accepted or rejected, in both cases, an email is sent to the customer.;2;FALSE;NONCOOCCURRENCE;accepted;rejected;PRECEDENCE;rejected;send email;PRECEDENCE;accepted;send email

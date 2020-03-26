@@ -1,10 +1,7 @@
 /¦ACTION:.*¦/=result < /¦then¦/
 /¦ACTION:.*¦/=result > (/¦be¦/ < /¦then¦/)
-#
 /¦ACTION:.*¦/=result > /¦after¦/
 /¦ACTION:.*¦/=result > (/¦be¦/ > /¦after¦/)
-#
 /¦ACTION:.*¦/=result > /¦before¦/
-#
 /¦ACTION:.*¦/=result < /¦and¦|¦or¦/ | > /¦and¦|¦or¦/
 /¦ACTION:.*¦/=result > (/¦be¦/ > /¦and¦|¦or¦/)

@@ -10,7 +10,7 @@
 /¦verb|:.*¦/=result < /¦either¦/=condition << /¦or¦/
 /¦verb|:.*¦/=result > (/¦or¦/ >> (/¦verb¦/ < /¦either¦/=condition))
 #-------------------- can ----------------------
-/¦verb¦|¦noun¦/=result > /¦can¦/=condition < (/¦or¦/ < /¦verb¦|¦noun¦/)
-/¦verb¦|¦noun¦/=result > (/¦be¦/ > /¦can¦/=condition << (/¦or¦/ < /¦verb¦|¦noun¦/))
-/¦verb¦|¦noun¦/=result > (/¦or¦/ > (/¦verb¦|¦noun¦/ > /¦can¦/=condition))
-/¦verb¦|¦noun¦/=result > (/¦or¦/ > (/¦verb¦|¦noun¦/ > (/¦be¦/ > /¦can¦/=condition)))
+#/¦verb¦|¦noun¦/=result > /¦can¦/=condition < (/¦or¦/ < /¦verb¦|¦noun¦/)
+#/¦verb¦|¦noun¦/=result > (/¦be¦/ > /¦can¦/=condition << (/¦or¦/ < /¦verb¦|¦noun¦/))
+#/¦verb¦|¦noun¦/=result > (/¦or¦/ > (/¦verb¦|¦noun¦/ > /¦can¦/=condition))
+#/¦verb¦|¦noun¦/=result > (/¦or¦/ > (/¦verb¦|¦noun¦/ > (/¦be¦/ > /¦can¦/=condition)))

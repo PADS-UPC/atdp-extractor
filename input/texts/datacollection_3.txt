@@ -1,0 +1,50 @@
+The Police Report related to the car accident is searched within the Police Report database and put in a file together with the Claim Documentation.
+A customer brings in a defective computer and the manager analyzes the defect and gives back an invoice.
+After each of these activities, the proper system functionality is tested.
+If an error is detected, another arbitrary repair activity is executed, otherwise the repair is finished.
+After a claim is registered, it is examined by a claims officer.
+This recommendation is then checked by a senior claims officer who may mark the claim as OK or Not OK.
+If the claim is marked as Not OK, it is sent back to the claims officer and the recommendation is repeated.
+If the claim is OK, the claim handling process proceeds.
+The process of buying new hardware is started as soon as a request for new hardware is received by the IT department.
+The next step is for the IT department to analyse the request and either approve or deny it.
+If it is denied, the employee is informed via email about the denial and the process is ended.
+However, if the request is approved it is edited and completed.
+Once this offer is received, a form is filled in and sent to the management.
+The management then analyses the request and decides if it is approved or not.
+When this is accepted and the financial resources are found, the hardware is received by the IT department.
+After which the financial department will take care of the invoice and the processes is ended.
+In the scenario where the management does not approve the request, it can send the request back to the IT department for rework, then the IT department has to go back to editing and completing a request.
+If the management does not approve the request, it can also decide to deny the request after which the process is ended.
+The loan approval process starts by receiving a customer request for a loan amount.
+If the customer needs further review or the loan amount is for \$10,000 or more, the request is sent to the approver Web service.
+The process of an Office Supply Request starts when any employee of the organization submits an office supply request.
+Once the requirement is registered, the request is received by the immediate supervisor of the employee requesting the office supplies.
+If the request is rejected, the process will end.
+If the request is asked to make a change, then it is returned to the petitioner who can review the comments for the change request.
+If the request is approved, it will go to the purchase department that will be in charge of making quotations (using a subprocess) and select a vendor.
+After a vendor is selected and confirmed, the system will generate and send a purchase order and wait for the product to be delivered and the invoice received.
+In any of the cases, approval, rejection or change required the system will send the user a notification.
+The process starts when any employee of the organization submits a vacation request.
+Once the requirement is registered, the request is received by the immediate supervisor of the employee requesting the vacation.
+If the request is rejected, the application is returned to the applicant/employee who can review the rejection reasons.
+If the request is approved, a notification is generated to the Human Resources Representative, who must complete the respective management procedures.
+The process starts by reviewing the order.
+If something is missing, the staff has to inform customer about a potential delay and order the missing products.
+After waiting an average of x days for the delivery, the staff should check again if all products are on store.
+The courier company informs the client about a potential delay until there are enough human resources to process the delivery.
+Once the driver delivers the package, she should update the system so all stakeholders are notified.
+Whenever the sales department receives an order, a new process instance is created.
+If the storehouse has successfully reserved or back-ordered every item of the part list and the preparation activity has finished, the engineering department assembles the bicycle.
+Afterwards, the sales department ships the bicycle to the customer and finishes the process instance.
+If the requested amount is lower or equal to 1M$, the company assess the risk of the credit.
+After the approval request, the credit could be accepted or rejected.
+If the requested amount is greater than 1M$, an approval must be requested.
+If the requested amount is lower or equal to 1M$, the company assess the risk of the credit.
+As soon as an employee files an expense report, the process is started.
+Once the expense report is received, a check is performed to make sure the employee has an account.
+If this check does not take place within 28 days, the process is stopped and the employee is sent a submit email.
+First, the supervisor approves within 7 days, this will result in the deposit of the reimbursement directly to the employee's bank account.
+Second, the supervisor rejects within 7 days, as a result the employee receives a notification through email that the request has been rejected.
+Third, if it takes the supervisor more than 7 days to respond, an email is sent to the employee informing him/her that the approval is in progress and the part of the processes after a supervisor is asked for approval is repeated.
+

@@ -1,0 +1,8 @@
+Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
+1;1;;;0;First, the Manager checks the open leads.;1;FALSE;EXISTENCE;check open leads;;;;;;;
+1;1;;;1;Afterwards, he selects the top five ones.;1;FALSE;EXISTENCE;select  top five ones;;;;;;;
+1;1;;;2;He then tells his Sales Assistant to call the contact person of the leads.;1;FALSE;EXISTENCE;call contact person;;;;;;;
+1;1;;;3;The Sales Assistant calls each customer.;0;;;;;;;;;;
+1;1;;;4;If someone is interested, he sends a note to the Manager.;1;FALSE;EXISTENCE;someone is interested;;;;;;;
+1;1;;;5;The Manager then processes the lead.;1;FALSE;EXISTENCE;process lead;;;;;;;
+1;1;;;6;Otherwise, he calls the next customer.;1;FALSE;EXISTENCE;call next customer;;;;;;;

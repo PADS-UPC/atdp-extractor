@@ -1,0 +1,7 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	The Customer Service Representative sends a Mortgage offer to the customer and waits for a reply.	1	false	[EXISTENCE(A=send mortgage offer for reply)]	2	2	1	0.5	0.5	0.5
+1	If the customer calls or writes back declining the mortgage, the case details are updated and the work is then archived prior to cancellation.	2	false	[PRECEDENCE(A=the customer calls or writes back declining the mortgage , B=update case detail), PRECEDENCE(A=the customer calls or writes back declining the mortgage , B=archive work)]	3	6	3	0.5	1.0	0.6666666666666666
+2	If the customer sends back the completed offer documents and attaches all prerequisite documents then the case is moved to administration for completion.	1	false	[EXISTENCE(A=the customer sends back the completed offer documents and attaches all prerequisite documents then )]	2	2	2	1.0	1.0	1.0
+3	If all pre-requisite documents are not provided a message is generated to the customer requesting outstanding documents.	1	true	[PRECEDENCE(A=all pre-requisite documents are not provided , B=generate message)]	4	4	4	1.0	1.0	1.0
+4	If no answer is received after 2 weeks, the case details are updated prior to archive and cancellation.	1	false	[PRECEDENCE(A=no answer is received after 2 weeks , B=update case detail)]	3	3	3	1.0	1.0	1.0
+				Total	14	17	13	0.765	0.929	0.839

@@ -1,0 +1,6 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	The credit company collects the credit information from the customer, If the requested amount is greater than 1M$ an approval must be requested.	1	false	[RESPONSE(A=collect credit information from customer, B=request approval)]	6	3	3	1.0	0.5	0.6666666666666666
+1	If the requested amount is lower or equal to 1M$ the company assess the risk of the credit.	1	false	[PRECEDENCE(A=request amount, B=assess risk of credit)]	3	3	3	1.0	1.0	1.0
+2	After the assessment, if the risk is high, an approval must be requested, but if the risk is low the credit is accepted.	3	false	[RESPONSE(A=the risk is high , B=request approval), NONCOOCCURRENCE(A=the risk is high , B=the risk is low ), PRECEDENCE(A=the risk is low , B=accept credit)]	9	9	8	0.8888888888888888	0.8888888888888888	0.8888888888888888
+3	After the approval request, the credit could be accepted or rejected, in both cases, an email is sent to the customer.	3	false	[PRECEDENCE(A=approval approval request, B=accept credit), PRECEDENCE(A=approval approval request, B=reject credit), PRECEDENCE(A=approval approval request, B=send case)]	6	9	1	0.1111111111111111	0.16666666666666666	0.13333333333333333
+				Total	24	24	15	0.625	0.625	0.625

@@ -42,17 +42,17 @@ public class PredicateHandler {
 			while (predicatesIterator.hasNext()) {
 				JSONObject newJsonObject = (JSONObject) predicatesIterator.next();
 				Predicate predicate = createNewPredicate(newJsonObject);
-				//if (tokens.get(predicate.getHead_token()).getWn() != null)
-					if (tokens.get(predicate.getHead_token()).getPos().equals("verb")
-							|| tokens.get(predicate.getHead_token()).getPos().equals("noun")) {
-						parsePredicateArgumentActors(predicate, newJsonObject);
-						parsePredicateArgumentObjects(predicate, newJsonObject);
-						if (predicate.getA1PlusArguments().size() > 0)// it has object
-							predicates.put(predicate.getHead_token(), predicate);
-					}
+				// if (tokens.get(predicate.getHead_token()).getWn() != null)
+				if (tokens.get(predicate.getHead_token()).getPos().equals("verb")
+						|| tokens.get(predicate.getHead_token()).getPos().equals("noun")) {
+					parsePredicateArgumentActors(predicate, newJsonObject);
+					parsePredicateArgumentObjects(predicate, newJsonObject);
+					if (predicate.getA1PlusArguments().size() > 0)// it has object
+						predicates.put(predicate.getHead_token(), predicate);
+				}
 			}
 			sortByRole();
-			//addToCsvFile(csvTextList);
+			// addToCsvFile(csvTextList);
 			return predicates;
 		} else {
 			System.err.println("predicates Not Found. There is not activities");
@@ -129,6 +129,9 @@ public class PredicateHandler {
 								+ tokens.get(argument.getHead_token()).getLemma() + "\t" + argument.getHead_token()
 								+ "\t" + argument.getWords();
 						csvTextList.add(csvText);
+					} else {
+						//remove all arguments if It refers to itself
+						predicate.getA1PlusArguments().clear();
 					}
 				}
 			}
@@ -161,6 +164,8 @@ public class PredicateHandler {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(argument.getRole());
 		if (matcher.matches())
+			return true;
+		if (argument.getRole().contains("R-AM-TMP") || argument.getRole().contains("AM-TMP") || argument.getRole().contains("AM-LOC"))//AM-MOD
 			return true;
 		return false;
 	}

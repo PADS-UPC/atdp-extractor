@@ -7,7 +7,6 @@ T8	Action 364 380	check and repair
 T4	Entity 221 234	computer home
 T6	Action 186 195	continues
 T18	Condition 197 206	otherwise
-T21	Action 186 195	continues
 T23	Action 76 85	hands out
 T9	Entity 385 393	hardware
 T11	Entity 449 457	software
@@ -25,8 +24,6 @@ R6	Patient Arg1:T15 Arg2:T16
 R7	Sequence Arg1:T17 Arg2:T6
 R8	Sequence Arg1:T18 Arg2:T3
 R14	Conflict Arg1:T17 Arg2:T18
-R15	Sequence Arg1:T21 Arg2:T8
-R16	Sequence Arg1:T21 Arg2:T10
 R17	Sequence Arg1:T8 Arg2:T12
 R18	Sequence Arg1:T10 Arg2:T12
 R19	Sequence Arg1:T10 Arg2:T8
@@ -39,3 +36,5 @@ R27	Patient Arg1:T23 Arg2:T25
 R28	Sequence Arg1:T22 Arg2:T23
 R29	Sequence Arg1:T23 Arg2:T17
 R30	Sequence Arg1:T23 Arg2:T18
+R31	Sequence Arg1:T6 Arg2:T8
+R32	Sequence Arg1:T6 Arg2:T10

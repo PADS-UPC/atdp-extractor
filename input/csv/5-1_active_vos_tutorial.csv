@@ -1,0 +1,7 @@
+Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
+1;1;;;0;The loan approval process starts by receiving a customer request for a loan amount.;1;FALSE;EXISTENCE;receive customer request;;;;;;;
+1;1;;;1;The risk assessment Web service is invoked to assess the request.;1;FALSE;EXISTENCE;invoke Web service;;;;;;;
+1;1;;;2;If the loan is small and the customer is low risk, the loan is approved.;1;FALSE;PRECEDENCE;the loan is small and the customer is low risk;approve loan;;;;;;
+1;1;;;3;If the customer is high risk, the loan is denied.;1;FALSE;PRECEDENCE;the customer is high risk;deny loan;;;;;;
+1;1;;;4;If the customer needs further review or the loan amount is for $10,000 or more, the request is sent to the approver Web service.;1;FALSE;PRECEDENCE;the customer needs further review or the loan amount is for $10,000 or more;send request;;;;;;
+1;1;;;5;The customer receives feedback from the assessor or approver.;0;;;;;;;;;;

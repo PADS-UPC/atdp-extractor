@@ -1,0 +1,5 @@
+#only one parameter
+/¦[parameter1]¦/=result > /¦must¦|¦will¦|¦would¦|¦shall¦|¦should¦/=mandatory
+/¦[parameter1]¦/=result > (/¦be¦/ > /¦must¦|¦will¦|¦would¦|¦shall¦|¦should¦/=mandatory)
+/¦[parameter1]¦/=result > (/¦be¦/ > (/¦have¦/ > /¦must¦|¦will¦|¦would¦|¦shall¦|¦should¦/=mandatory))
+/¦[parameter1]¦/=result > (/¦to¦/ > /¦have¦/=mandatory)

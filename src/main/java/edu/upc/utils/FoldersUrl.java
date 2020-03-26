@@ -5,7 +5,9 @@ public enum FoldersUrl {
 	OUTPU_ATDP_TFOLDER("output/atdp/"),
 	TREE_FOLDER("output/tree/"),
 	JUDGEANNOTATION_FOLDER("input/judgeannotations/"),
-	FREELING_FOLDER("freeling/");
+	CSV_INPUT_FOLDER("input/csv/"),
+	CSV_OUTPUT_FOLDER("output/csv/"),
+	FREELING_FOLDER(System.getProperty("user.home")+"/doc2bpmnutils/freeling/");
 
 	private String description;
 

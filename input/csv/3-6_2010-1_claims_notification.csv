@@ -1,0 +1,9 @@
+Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
+1;1;;;0;When a claim is received, it is first checked whether the claimant is insured by the organization.;2;FALSE;PRECEDENCE;receive claim;check claim;RESPONSE;receive;the claimant is insured by the organization;;;
+1;1;;;1;If not, the claimant is informed that the claim must be rejected.;1;FALSE;EXISTENCE;inform claimant;;;;;;;
+1;1;;;2;Otherwise, the severity of the claim is evaluated.;1;FALSE;EXISTENCE;evaluate severity of the claim;;;;;;;
+1;1;;;3;Based on the outcome (simple or complex claims), relevant forms are sent to the claimant.;1;FALSE;EXISTENCE;send forms;;;;;;;
+1;1;;;4;Once the forms are returned, they are checked for completeness.;1;FALSE;PRECEDENCE;return forms;check forms;;;;;;
+1;1;;;5;If the forms provide all relevant details, the claim is registered in the Claims Management system, which ends the Claims Notification process.;1;FALSE;PRECEDENCE;the forms provide all relevant details;register claim;;;;;;
+1;1;;;6;Otherwise, the claimant is informed to update the forms.;1;FALSE;EXISTENCE;inform claimant;;;;;;;
+1;1;;;7;Upon reception of the updated forms, they are checked again.;1;FALSE;EXISTENCE;check forms;;;;;;;

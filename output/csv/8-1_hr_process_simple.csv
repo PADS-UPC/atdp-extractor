@@ -1,0 +1,5 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	The process is triggered by the demand of a functional department to fill a post.	1	false	[EXISTENCE(A=trigger process)]	0	2	0	0.0	NaN	NaN
+1	The post is advertised, applicants apply, the applications are checked and the post is filled.	2	false	[PRECEDENCE(A=advertise post, B=apply applicant), PRECEDENCE(A=advertise post, B=fill post)]	9	6	5	0.8333333333333334	0.5555555555555556	0.6666666666666667
+2	The process finishes when the post was filled, precisely through the conclusion of a contract of employment.	1	false	[END(A=fill process)]	2	2	1	0.5	0.5	0.5
+				Total	11	10	6	0.6	0.545	0.571

@@ -1,0 +1,9 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	First, the Manager checks the open leads.	1	false	[EXISTENCE(A=check open lead)]	2	2	2	1.0	1.0	1.0
+1	Afterwards, he selects the top five ones.	1	false	[EXISTENCE(A=select top 5 one)]	2	2	2	1.0	1.0	1.0
+2	He then tells his Sales Assistant to call the contact person of the leads.	1	false	[EXISTENCE(A=tell his sales_assistant)]	2	2	2	1.0	1.0	1.0
+3	The Sales Assistant calls each customer.	1	false	[EXISTENCE(A=call customer)]	0	2	0	0.0	NaN	NaN
+4	If someone is interested, he sends a note to the Manager.	1	false	[PRECEDENCE(A=someone is interested , B=send note)]	2	3	1	0.3333333333333333	0.5	0.4
+5	The Manager then processes the lead.	1	false	[EXISTENCE(A=process lead)]	2	2	2	1.0	1.0	1.0
+6	Otherwise, he calls the next customer.	1	false	[PRECEDENCE(A=otherwise, B=call next customer)]	2	3	0	0.0	0.0	NaN
+				Total	12	16	9	0.562	0.75	0.643

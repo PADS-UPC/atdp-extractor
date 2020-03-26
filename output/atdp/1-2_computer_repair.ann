@@ -1,44 +1,27 @@
 T0	Condition 122 172	the customer decides that the costs are acceptable 
 T1	Condition 539 559	an error is detected 
 T2	Condition 197 206	otherwise
-T3	Action 76 81	hands
-T4	Action 100 111	calculation
-T5	Action 186 195	continues
-T6	Action 211 216	takes
-T7	Action 305 313	executed
-T8	Action 374 380	repair
-T9	Action 434 444	configures
-T10	Action 527 533	tested
-T11	Action 551 559	detected
-T12	Action 597 605	executed
-T13	Action 631 639	finished
-T14	Entity 126 134	customer
-T15	Entity 88 111	repair cost calculation
-T16	Entity 88 99	repair cost
-T17	Entity 178 185	process
-T18	Entity 217 234	her computer home
-T19	Entity 279 293	2 activity
-T20	Entity 385 393	hardware
-T21	Entity 449 457	software
-T22	Entity 496 523	proper system functionality
-T23	Entity 542 547	error
-T24	Entity 568 593	arbitrary repair activity
-T25	Entity 621 627	repair
-R0	Agent Arg1:T6 Arg2:T14
-R1	Patient Arg1:T3 Arg2:T15
-R2	Patient Arg1:T4 Arg2:T16
-R3	Patient Arg1:T5 Arg2:T17
-R4	Patient Arg1:T6 Arg2:T18
-R5	Patient Arg1:T7 Arg2:T19
-R6	Patient Arg1:T8 Arg2:T20
-R7	Patient Arg1:T9 Arg2:T21
-R8	Patient Arg1:T10 Arg2:T22
-R9	Patient Arg1:T11 Arg2:T23
-R10	Patient Arg1:T12 Arg2:T24
-R11	Patient Arg1:T13 Arg2:T25
-R13	Sequence Arg1:T8 Arg2:T9
-R14	Sequence Arg1:T0 Arg2:T6
-R15	Sequence Arg1:T0 Arg2:T5
-R16	Sequence Arg1:T1 Arg2:T13
-R17	Sequence Arg1:T1 Arg2:T11
-R18	Sequence Arg1:T2 Arg2:T0
+T3	Action 211 216	takes
+T4	Action 267 275	consists
+T5	Action 374 380	repair
+T6	Action 434 444	configures
+T7	Action 527 533	tested
+T8	Action 631 639	finished
+T9	Entity 126 134	customer
+T10	Entity 217 234	her computer home
+T11	Entity 252 266	ongoing repair
+T12	Entity 385 393	hardware
+T13	Entity 449 457	software
+T14	Entity 496 523	proper system functionality
+T15	Entity 621 627	repair
+R0	Agent Arg1:T3 Arg2:T9
+R1	Patient Arg1:T3 Arg2:T10
+R2	Patient Arg1:T4 Arg2:T11
+R3	Patient Arg1:T5 Arg2:T12
+R4	Patient Arg1:T6 Arg2:T13
+R5	Patient Arg1:T7 Arg2:T14
+R6	Patient Arg1:T8 Arg2:T15
+R8	Sequence Arg1:T5 Arg2:T6
+R9	Sequence Arg1:T0 Arg2:T3
+R10	Sequence Arg1:T1 Arg2:T8
+R11	Sequence Arg1:T2 Arg2:T0

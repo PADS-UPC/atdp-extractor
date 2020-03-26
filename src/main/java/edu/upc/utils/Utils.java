@@ -7,11 +7,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import edu.upc.entities.Token;
 
 public class Utils {
 	public static final String separator = "¦";
+	public static final String[] START_VERBS = new String[] { "start", "begin" };
+	public static final String[] END_VERBS = new String[] { "end", "finish" };
+	public static final String[] PROCESS_OBJECTS = new String[] { "process", "the process", "workflow", "instance",
+			"case" };
 
 	public static boolean isToApplyPattern() throws IOException {
 		String applyPatterns = readPatternFile(FilesUrl.APPLY_PATTERNS_FILE.toString()).get(0);
@@ -21,12 +26,21 @@ public class Utils {
 	}
 
 	public static boolean isNounAction(String wn, String lemma) throws IOException {
-		ArrayList<String[]> nounActivityList = readNounActivityFile(FilesUrl.FREEELING_NOUN_CONFIG_FILE.toString());
-		for (int i = 0; i < nounActivityList.size(); i++) {
-			if (wn.equals(nounActivityList.get(i)[0]) && nounActivityList.get(i)[1].contains(lemma)) {
-				return true;
+		return isNounActionToAdd(wn, lemma, false);
+	}
+
+	public static boolean isNounActionToAdd(String wn, String lemma, Boolean toAdd) throws IOException {
+		ArrayList<String[]> nounActivityList = null;
+		if (toAdd)
+			nounActivityList = readNounActivityFile(FilesUrl.FREEELING_NOUN_TO_ADD_CONFIG_FILE.toString());
+		else
+			nounActivityList = readNounActivityFile(FilesUrl.FREEELING_NOUN_CONFIG_FILE.toString());
+		if (wn != null && lemma != null)
+			for (int i = 0; i < nounActivityList.size(); i++) {
+				if (wn.equals(nounActivityList.get(i)[0]) && nounActivityList.get(i)[1].contains(lemma)) {
+					return true;
+				}
 			}
-		}
 		return false;
 	}
 
@@ -91,7 +105,7 @@ public class Utils {
 		String line;
 		ArrayList<String> list = new ArrayList<String>();
 		while ((line = bufferedReader.readLine()) != null) {
-			if (!line.contains("#") && !line.isEmpty())
+			if (!line.startsWith("#") && !line.isEmpty())
 				list.add(line);
 		}
 		bufferedReader.close();
@@ -160,4 +174,15 @@ public class Utils {
 
 	}
 
+	public static boolean isProcessObject(String object) {
+		return Arrays.asList(PROCESS_OBJECTS).contains(object.toLowerCase());
+	}
+
+	public static boolean isStartVerb(String verb) {
+		return Arrays.asList(START_VERBS).contains(verb.toLowerCase());
+	}
+
+	public static boolean isEndVerb(String verb) {
+		return Arrays.asList(END_VERBS).contains(verb.toLowerCase());
+	}
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map.Entry;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,6 +16,7 @@ import edu.upc.entities.Entity;
 import edu.upc.entities.Mention;
 import edu.upc.entities.Predicate;
 import edu.upc.entities.Token;
+import edu.upc.utils.Utils;
 
 public class ParagraphHandler {
 
@@ -70,8 +73,23 @@ public class ParagraphHandler {
 				LinkedHashMap<String, Predicate> predicatesTmp = new LinkedHashMap<String, Predicate>();
 				PredicateHandler predicateHandler = new PredicateHandler(tokens);
 				predicatesTmp = predicateHandler.parsePredicates(jsonObject);
-				if (predicatesTmp != null)
+				if (predicatesTmp != null) {
+					for (Entry<String, Token> token : tokens.entrySet()) {
+						if(!predicatesTmp.containsKey(token.getKey()))
+						if (Utils.isNounActionToAdd(token.getValue().getWn(), token.getValue().getLemma(), true)
+								&& !predicatesTmp.containsKey(token.getKey())) {
+							Predicate predicate = new Predicate();
+							predicate.setId(token.getKey());
+							predicate.setHead_token(token.getKey());
+							predicate.setSense(token.getValue().getLemma());
+							predicate.setWords(token.getValue().getLemma());
+							predicatesTmp.put(token.getKey(), predicate);
+						}
+					}
+
 					predicates.putAll(predicatesTmp);
+				}
+
 				DependeciesTreeHandler dependenciesHandler = new DependeciesTreeHandler(tokens, predicatesTmp);
 				List<Tree> treesTmp = null;
 				treesTmp = dependenciesHandler.parseDependencies(jsonObject);

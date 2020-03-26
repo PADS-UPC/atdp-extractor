@@ -1,0 +1,6 @@
+#only one parameter: activityB id
+/¦[parameter1]¦/=result < /¦first¦|¦before¦|¦earlier¦|¦adjective¦1¦/
+/¦[parameter1]¦/=result >> /¦unless¦/
+/¦[parameter1]¦/=result > (/¦by¦/ > /¦precede¦/)
+/¦[parameter1]¦/=result >> (/¦MD¦/ << /¦precede¦/)
+/¦[parameter1]¦/=result >> /¦after¦/

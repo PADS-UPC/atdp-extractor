@@ -356,17 +356,17 @@ public class AtdpHandler {
 			if (activity.getValue().getRole().equals(ActionType.ACTIVITY)) {
 				String text = tokens.get(activity.getKey()).getForm().toLowerCase();
 				String words[] = { "T" + count, "Action", activity.getValue().getAction().getBegin().toString(),
-						activity.getValue().getAction().getEnd().toString(), text,
-						activity.getValue().getPatient().getBegin().toString(),
-						activity.getValue().getPatient().getEnd().toString() };
+						activity.getValue().getAction().getEnd().toString(), text};
+						//activity.getValue().getPatient().getBegin().toString(),
+						//activity.getValue().getPatient().getEnd().toString() };
 				actionAnnotationList.add(words);
 				count++;
 			} else if (activity.getValue().getRole().equals(ActionType.EVENT)) {
 				String text = tokens.get(activity.getKey()).getForm().toLowerCase();
 				String words[] = { "T" + count, "Action", activity.getValue().getAction().getBegin().toString(),
-						activity.getValue().getAction().getEnd().toString(), text,
-						activity.getValue().getPatient().getBegin().toString(),
-						activity.getValue().getPatient().getEnd().toString() };
+						activity.getValue().getAction().getEnd().toString(), text};
+						//activity.getValue().getPatient().getBegin().toString(),
+						//activity.getValue().getPatient().getEnd().toString() };
 				actionAnnotationList.add(words);
 				count++;
 

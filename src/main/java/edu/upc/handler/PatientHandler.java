@@ -19,6 +19,7 @@ public class PatientHandler {
 	private LinkedHashMap<String, Token> tokens;
 	private LinkedHashMap<String, Predicate> predicates;
 	private ArrayList<String> posToMakeShortPatient;
+	private ArrayList<String> determinerToMakeShortPatient;
 	private ArrayList<String> words;
 	private Boolean prepositionFound;
 
@@ -31,11 +32,15 @@ public class PatientHandler {
 		this.patientsList = new LinkedHashMap<String, Patient>();
 
 		posToMakeShortPatient = new ArrayList<String>();
+		determinerToMakeShortPatient = new ArrayList<String>();
 		posToMakeShortPatient.add("noun");
 		posToMakeShortPatient.add("adjective");
 		posToMakeShortPatient.add("pronoun");
 		posToMakeShortPatient.add("preposition");
 		posToMakeShortPatient.add("number");
+		determinerToMakeShortPatient.add("those");
+		determinerToMakeShortPatient.add("these");
+		determinerToMakeShortPatient.add("this");
 		fillPatientsFromPredicate();
 		delimitePatientsNameLength();
 		removePatientsWithNullText();
@@ -89,7 +94,7 @@ public class PatientHandler {
 			prepositionFound = false;
 			String text = "";
 			String patientToken = patient.getKey();
-			if (posToMakeShortPatient.contains(tokens.get(patientToken).getPos()))
+			if (posToMakeShortPatient.contains(tokens.get(patientToken).getPos()) || determinerToMakeShortPatient.contains(tokens.get(patientToken).getForm().toLowerCase()))
 				text = findSubjectInSubtreesAndMakePatientName(patientToken); // TODO send exactly tree
 			else {
 				patient.getValue().setShortText(null);
@@ -111,6 +116,10 @@ public class PatientHandler {
 
 	private String findSubjectInSubtreesAndMakePatientName(String patientToken) {
 		String text = "";
+		if (determinerToMakeShortPatient.contains(tokens.get(patientToken).getForm().toLowerCase())) {
+			words.add(patientToken);
+			return tokens.get(patientToken).getForm().toLowerCase();
+		}
 		if (posToMakeShortPatient.contains(tokens.get(patientToken).getPos())) {
 			Boolean found = false;
 			ArrayList<String> list = new ArrayList<String>();

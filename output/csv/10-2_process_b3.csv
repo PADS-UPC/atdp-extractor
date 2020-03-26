@@ -1,0 +1,16 @@
+Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
+0	The MPON reports the meter operation to the GO.	1	false	[EXISTENCE(A=report meter operation)]	0	2	0	0.0	NaN	NaN
+1	The GO examines the application of the MPON.	1	false	[EXISTENCE(A=examine application of mpon)]	0	2	0	0.0	NaN	NaN
+2	The GO rejects the application of the MPON or the GO confirmes the application of the MPON.	1	false	[PRECEDENCE(A=reject application of mpon, B=confirmes application of mpon)]	2	3	1	0.3333333333333333	0.5	0.4
+3	The GO informs the MPOO about the registration confirmation of the MPON.	1	false	[EXISTENCE(A=inform mpoo)]	2	2	2	1.0	1.0	1.0
+4	The GO informs the MSPO about the registration confirmation of the MPON.	1	false	[EXISTENCE(A=inform mspo)]	2	2	2	1.0	1.0	1.0
+5	The MPON and the MPOO perform the equipment acquisition and/or equipment changes.	1	false	[EXISTENCE(A=perform equipment acquisition)]	3	2	1	0.5	0.3333333333333333	0.4
+6	The MPON informs the GO about the failure of the entire process or the MPON informs the GO about the successful completion of the entire process.	1	false	[PRECEDENCE(A=inform go, B=inform go)]	2	3	1	0.3333333333333333	0.5	0.4
+7	The GO informs the MPON about the failure of the overall transaction by deadline if after a maximum time limit no message of the MPON is present at the GO.	1	false	[PRECEDENCE(A=inform mpon, B=after a maximum time limit no message of the MPON )]	2	3	1	0.3333333333333333	0.5	0.4
+8	If the MPON informs the GO about the failure of the entire process, the GO confirms the failure of the assignment to the MPON.	0			3	0	0	0	0	0
+9	If the MPON informs the GO about the successful completion of the overall process, the GO assigns the MPON.	0			3	0	0	0	0	0
+10	The GO confirms the assignment to the MPON.	1	false	[EXISTENCE(A=confirm assignment)]	2	2	2	1.0	1.0	1.0
+11	The GO informs the MPOO about the failure of the assignment of the MPON or the GO informs the MPOO about the assignment of the MPON.	1	false	[PRECEDENCE(A=inform mpoo, B=inform mpoo)]	2	3	1	0.3333333333333333	0.5	0.4
+12	The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs the MSPO about the assignment of the MPON.	1	false	[PRECEDENCE(A=inform mspo, B=inform mspo)]	2	3	1	0.3333333333333333	0.5	0.4
+13	The GO informs the SP about the assignment of the MPON.	1	false	[EXISTENCE(A=inform sp)]	2	2	2	1.0	1.0	1.0
+				Total	27	29	14	0.483	0.519	0.5

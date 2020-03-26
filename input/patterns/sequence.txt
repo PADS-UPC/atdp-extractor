@@ -4,22 +4,18 @@
 /¦CONDITION:.*¦/=origin >, (/¦if¦/ > (/¦verb¦/ < (/¦be¦|¦to¦/ < /¦ACTIVITY:.*¦/=destination)))
 /¦CONDITION:.*¦/=origin > (/¦be¦|¦do¦/ > (/¦if¦/ > (/¦verb¦/ < /¦ACTIVITY:.*¦/=destination)))
 /¦CONDITION:.*¦/=origin >> (/¦if¦/ < (/¦be¦/ < /¦ACTIVITY:.*¦/=destination))
-#
+/¦CONDITION:.*¦/=origin >, (/¦if¦/ > (/¦verb¦/ < (/¦have¦/ < (/¦be¦/ < /¦ACTIVITY:.*¦/=destination))))
 #------------------- EVENT to ACTIVITY--------------------------
 /¦EVENT:.*¦/=origin > /¦ACTIVITY:.*¦/=destination
 /¦EVENT:.*¦/=origin >> (/¦verb¦/ << /¦ACTIVITY:.*¦/=destination)
-#
 #---------------------- ACTIVITY or EVENT to many CONDITIONS------------------------
 /¦CONDITION:.*¦/=destination >> (/¦whether¦/ >> /¦ACTIVITY:.*¦|¦EVENT:.*¦/=origin)
 /¦CONDITION:.*¦/=destination >> /¦ACTIVITY:.*¦|¦EVENT:.*¦/=origin < /¦either¦/
 /¦CONDITION:.*¦/=destination >> (/¦or¦/ >> /¦ACTIVITY:.*¦|¦EVENT:.*¦/=origin)
 #-----------------------ACTIVITY/EVENT to many ACTIVITIES-------------------------------
-# we assume "and" means sequential (not parallel)
 /¦ACTIVITY:.*¦|¦EVENT:.*¦/=origin << (/¦ACTIVITY:.*¦/=destination < /¦and¦/)
 /¦ACTIVITY:.*¦/=origin < (/¦and¦/ < /¦ACTIVITY:.*¦/=destination)
-#---paralel?
 #/¦ACTIVITY:.*¦|¦EVENT:.*¦/ << (/¦ACTIVITY:.*¦/ < (/¦and¦/ < /¦ACTIVITY:.*¦/))
-#
 #-------------------ACTIVITIES to ACTIVITY---------------------------
 /¦ACTIVITY:.*¦/=origin < (/¦and¦/ << (/¦ACTIVITY:.*¦/=destination < /¦then¦/ ))
 /¦ACTIVITY:.*¦/=origin << (/¦and¦/ << (/¦ACTIVITY:.*¦/=destination < /¦then¦/))
@@ -27,7 +23,6 @@
 /¦ACTIVITY:.*¦/=origin >> (/¦after¦/ > (/¦be¦/ < /¦ACTIVITY.*¦/=destination))
 /¦ACTIVITY:.*¦/=destination > (/¦be¦/ > (/¦after¦/ > (/¦ACTIVITY:.*¦/=origin > /¦be¦/)))
 /¦ACTIVITY:.*¦/=origin < (/¦before¦/ < /¦ACTIVITY:*/=destination)
-#
 #---------------------in latter case--------------------------------------------
 #/¦CONDITION:.*¦/=origin >> (/¦case¦/ >: (/¦in¦/ > /¦ACTIVITY:.*¦/=destination))
 #/¦CONDITION:.*¦/=origin >> (/¦case¦/ >: (/¦in¦/ > (/¦be¦/ < /¦ACTIVITY:.*¦/=destination)))
@@ -35,4 +30,4 @@
 /¦CONDITION:.*¦/=origin > /¦ACTIVITY:.*¦/=destination
 /¦CONDITION:.*¦/=origin > (/¦be¦/ < /¦ACTIVITY:.*¦/=destination)
 /¦CONDITION:.*¦/=origin > (/¦verb¦/ << (/¦be¦/ < /¦ACTIVITY:.*¦/=destination))
-
+/¦CONDITION:.*¦/=destination << (/¦or¦/ >> /¦ACTIVITY:.*¦|¦EVENT:.*¦/=origin)

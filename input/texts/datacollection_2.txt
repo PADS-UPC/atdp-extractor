@@ -1,0 +1,18 @@
+A claim should be created, before it can be approved.
+A claim must be created, before it is approved.
+When a claim is created, it may be approved.
+If a claim is created, it can be approved.
+They have to create the claim, before they can approve it.
+Only after a claim is created, it is possible to approve the claim.
+If a claim is approved, then it must have been created first.
+To approve a claim, it should be created first.
+A claim can be approved, after it has been created.
+Approving the claim can happen at anytime, unless it still needs to be created.
+Creation of the claim is required, before it can be approved.
+The creation of the claim is a condition for the approval of the claim.
+Only after the creation of a claim, the approval of the claim is possible.
+When approval of the claim occurs, creation of the claim must have preceded.
+If approval of the claim occurs, then creation of the claim must have been carried out first.
+The approval of the claim requires that the creation of the claim occurs before it.
+The approval of the claim should be preceded by the creation of the claim.
+

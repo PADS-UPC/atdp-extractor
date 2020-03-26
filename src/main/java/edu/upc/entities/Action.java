@@ -6,9 +6,11 @@ public class Action {
 	private String word;
 	private Integer begin;
 	private Integer end;
+	private String mainVerbLemma;
 
 	public Action() {
 		super();
+		this.mainVerbLemma = null;
 	}
 
 	public Action(String id, String word, Integer begin, Integer end) {
@@ -17,6 +19,7 @@ public class Action {
 		this.word = word;
 		this.begin = begin;
 		this.end = end;
+		this.mainVerbLemma = null;
 	}
 
 	public String getId() {
@@ -54,5 +57,13 @@ public class Action {
 	@Override
 	public String toString() {
 		return "Action: [id:" + this.id + ", Word:" + this.word + "]";
+	}
+
+	public String getMainVerbLemma() {
+		return mainVerbLemma;
+	}
+
+	public void setMainVerbLemma(String mainVerbLemmma) {
+		this.mainVerbLemma = mainVerbLemmma;
 	}
 }
