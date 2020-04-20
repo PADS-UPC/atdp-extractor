@@ -1,9 +1,0 @@
-#-----------once-------------
-/¦ACTION:.*¦/=result > /¦once¦/=condition
-/¦ACTION:.*¦/=result > (/¦be¦/ > /¦once¦/=condition)
-#------------as soon as ----------
-/¦ACTION:.*¦/=result >> (/¦as¦/ >- /¦soon¦/=condition)
-#------------when----------
-/¦ACTION:.*¦/=result <, /¦when¦/=condition
-#
-/¦ACTION:.*¦/=result < /¦whenever¦/=condition

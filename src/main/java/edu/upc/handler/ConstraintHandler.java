@@ -8,14 +8,15 @@ import java.util.LinkedHashMap;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.tregex.TregexMatcher;
 import edu.stanford.nlp.trees.tregex.TregexPattern;
+import edu.upc.atdputils.AtdpUtils;
+import edu.upc.atdputils.ConstraintType;
+import edu.upc.atdputils.FilesUrl;
 import edu.upc.entities.Activity;
 import edu.upc.entities.Constraint;
 import edu.upc.entities.SentenceConstraint;
 import edu.upc.entities.Token;
-import edu.upc.utils.ActionType;
-import edu.upc.utils.ConstraintType;
-import edu.upc.utils.FilesUrl;
-import edu.upc.utils.Utils;
+import edu.upc.freelingutils.ActionType;
+import edu.upc.freelingutils.FreelingUtils;
 
 public class ConstraintHandler {
 	private LinkedHashMap<String, Activity> activitiesList;
@@ -49,8 +50,8 @@ public class ConstraintHandler {
 			for (int i = 0; i < activitiesArray.size(); i = i + 2) {
 				activityA = activitiesArray.get(i);
 				activityB = activitiesArray.get(i + 1);
-				if (Utils.isProcessObject(activityA.getAction().getWord())
-						|| Utils.isProcessObject(activityB.getAction().getWord())) {
+				if (AtdpUtils.isProcessObject(activityA.getAction().getWord())
+						|| AtdpUtils.isProcessObject(activityB.getAction().getWord())) {
 					return null;
 				}
 				if (isReverseB(activityB)) {
@@ -58,15 +59,15 @@ public class ConstraintHandler {
 					activityA = activityB;
 					activityB = activityTmp;
 				}
-				if (Utils.isStartVerb(activityA.getAction().getWord()) && activityB.getRole() != ActionType.CONDITION) {
+				if (AtdpUtils.isStartVerb(activityA.getAction().getWord()) && activityB.getRole() != ActionType.CONDITION) {
 					constraint = new Constraint(ConstraintType.INIT, activityB);
-				} else if (Utils.isStartVerb(activityB.getAction().getWord())
+				} else if (AtdpUtils.isStartVerb(activityB.getAction().getWord())
 						&& activityA.getRole() != ActionType.CONDITION) {
 					constraint = new Constraint(ConstraintType.INIT, activityA);
-				} else if (Utils.isEndVerb(activityA.getAction().getWord())
+				} else if (AtdpUtils.isEndVerb(activityA.getAction().getWord())
 						&& activityB.getRole() != ActionType.CONDITION) {
 					constraint = new Constraint(ConstraintType.END, activityB);
-				} else if (Utils.isEndVerb(activityB.getAction().getWord())
+				} else if (AtdpUtils.isEndVerb(activityB.getAction().getWord())
 						&& activityA.getRole() != ActionType.CONDITION) {
 					constraint = new Constraint(ConstraintType.END, activityA);
 				} else if (activityA.getRole() == ActionType.CONDITION && activityB.getRole() == ActionType.CONDITION) {
@@ -107,7 +108,7 @@ public class ConstraintHandler {
 	private ArrayList<Activity> fillActivitiesFromTree() {
 		ArrayList<Activity> activities = new ArrayList<Activity>();
 		ArrayList<String> patternStrList = new ArrayList<String>();
-		patternStrList.add("/" + Utils.separator + "*:.*" + Utils.separator + "/=result");
+		patternStrList.add("/" + FreelingUtils.separator + "*:.*" + FreelingUtils.separator + "/=result");
 		String resultToken = "";
 		for (String patternStr : patternStrList) {
 			TregexPattern pattern = TregexPattern.compile(patternStr);
@@ -115,7 +116,7 @@ public class ConstraintHandler {
 			while (matcher.findNextMatchingNode()) {
 				Tree tResult = matcher.getNode("result");
 				if (tResult != null) {
-					resultToken = Utils.getTokenFromNode(tResult.label().value());
+					resultToken = FreelingUtils.getTokenFromNode(tResult.label().value());
 					if (activitiesList.containsKey(resultToken))
 						activities.add(activitiesList.get(resultToken));
 				}
@@ -182,9 +183,9 @@ public class ConstraintHandler {
 	private Boolean isConditionToReverseFollow(Activity activityA, Activity activityB) throws IOException {
 		if (activityB.getRole() == ActionType.CONDITION) {
 			ArrayList<String> patternStrList = new ArrayList<String>();
-			patternStrList.add("/" + Utils.separator + activityA.getId() + Utils.separator + "/=destination < (/"
-					+ Utils.separator + "if" + Utils.separator + "/ < /" + Utils.separator + activityB.getId()
-					+ Utils.separator + "/=origin)");
+			patternStrList.add("/" + FreelingUtils.separator + activityA.getId() + FreelingUtils.separator + "/=destination < (/"
+					+ FreelingUtils.separator + "if" + FreelingUtils.separator + "/ < /" + FreelingUtils.separator + activityB.getId()
+					+ FreelingUtils.separator + "/=origin)");
 			for (String patternStr : patternStrList) {
 				TregexPattern pattern = TregexPattern.compile(patternStr);
 				TregexMatcher matcher = pattern.matcher(tree);
@@ -199,7 +200,7 @@ public class ConstraintHandler {
 
 	private boolean isActivityIdFound(Activity activity, FilesUrl fileUrl) throws IOException {
 		ArrayList<String> patterns = new ArrayList<String>();
-		patterns = Utils.readPatternFile(fileUrl.toString());
+		patterns = FreelingUtils.readPatternFile(fileUrl.toString());
 		for (String patternStr : patterns) {
 			patternStr = patternStr.replace("[parameter1]", activity.getId());
 			TregexPattern pattern = TregexPattern.compile(patternStr);
@@ -208,9 +209,9 @@ public class ConstraintHandler {
 				Tree tResult = matcher.getNode("result");
 				Tree tMandatory = matcher.getNode("mandatory");
 				if (tResult != null) {
-					String tokenResult = Utils.getTokenFromNode(tResult.value());
+					String tokenResult = FreelingUtils.getTokenFromNode(tResult.value());
 					if (tMandatory != null) {
-						String tokenMandatory = Utils.getTokenFromNode(tMandatory.value());
+						String tokenMandatory = FreelingUtils.getTokenFromNode(tMandatory.value());
 						if (tokens.get(tokenResult).getBegin() > tokens.get(tokenMandatory).getBegin())
 							return true;
 					} else
@@ -225,12 +226,12 @@ public class ConstraintHandler {
 		ArrayList<String> patternStrList = new ArrayList<String>();
 		String param = "";
 		Boolean found = false;
-		for (int i = 0; i < Arrays.asList(Utils.END_VERBS).size(); i++) {
+		for (int i = 0; i < Arrays.asList(AtdpUtils.END_VERBS).size(); i++) {
 			if (!found)
 				found = true;
 			else
 				param += "|";
-			param += Utils.separator + Arrays.asList(Utils.END_VERBS).get(i) + Utils.separator;
+			param += FreelingUtils.separator + Arrays.asList(AtdpUtils.END_VERBS).get(i) + FreelingUtils.separator;
 		}
 		patternStrList.add("/" + param + "/=result");
 		for (String patternStr : patternStrList) {
@@ -250,12 +251,12 @@ public class ConstraintHandler {
 		ArrayList<String> patternStrList = new ArrayList<String>();
 		String param = "";
 		Boolean found = false;
-		for (int i = 0; i < Arrays.asList(Utils.START_VERBS).size(); i++) {
+		for (int i = 0; i < Arrays.asList(AtdpUtils.START_VERBS).size(); i++) {
 			if (!found)
 				found = true;
 			else
 				param += "|";
-			param += Utils.separator + Arrays.asList(Utils.START_VERBS).get(i) + Utils.separator;
+			param += FreelingUtils.separator + Arrays.asList(AtdpUtils.START_VERBS).get(i) + FreelingUtils.separator;
 		}
 		patternStrList.add("/" + param + "/=result");
 		for (String patternStr : patternStrList) {
@@ -273,7 +274,7 @@ public class ConstraintHandler {
 
 	private Boolean isNegativeSentence() {
 		ArrayList<String> patternStrList = new ArrayList<String>();
-		patternStrList.add("/" + Utils.separator + "not" + Utils.separator + "/=result");
+		patternStrList.add("/" + FreelingUtils.separator + "not" + FreelingUtils.separator + "/=result");
 		for (String patternStr : patternStrList) {
 			TregexPattern pattern = TregexPattern.compile(patternStr);
 			TregexMatcher matcher = pattern.matcher(tree);

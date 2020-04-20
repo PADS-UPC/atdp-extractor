@@ -1,6 +1,0 @@
-Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
-1;1;;;0;The Customer Service Representative sends a Mortgage offer to the customer and waits for a reply.;1;FALSE;END;send Mortgage offer;;;;;;;
-1;1;;;1;If the customer calls or writes back declining the mortgage, the case details are updated and the work is then archived prior to cancellation.;1;FALSE;PRECEDENCE;the customer calls or writes back declining the mortgage;update case;;;;;;
-1;1;;;2;If the customer sends back the completed offer documents and attaches all prerequisite documents then the case is moved to administration for completion.;1;FALSE;EXISTENCE;the customer sends back the completed offer documents and attaches all prerequisite documents;;;;;;;
-1;1;;;3;If all pre-requisite documents are not provided a message is generated to the customer requesting outstanding documents.;1;TRUE;PRECEDENCE;all pre-requisite documents are not provided;generate message;;;;;;
-1;1;;;4;If no answer is received after 2 weeks, the case details are updated prior to archive and cancellation.;1;FALSE;PRECEDENCE;no answer is received after 2 weeks;update case;;;;;;

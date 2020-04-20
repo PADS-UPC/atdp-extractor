@@ -1,9 +1,0 @@
-Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
-1;1;;;0;An order to cash process starts when a customer order is received.;0;;;;;;;;;;
-1;1;;;1;After the order has been processed, it is send to the warehouse.;1;FALSE;PRECEDENCE;process order;send order;;;;;;
-1;1;;;2;The warehouse employees determine the parts required to produce the requested items.;1;FALSE;EXISTENCE;determine parts required;;;;;;;
-1;1;;;3;If any parts are not available in the warehouse, these are ordered.;1;TRUE;PRECEDENCE;any parts are not available in the warehouse;order parts;;;;;;
-1;1;;;4;Once all necessary parts are available, production will start.;0;;;;;;;;;;
-1;1;;;5;After production, quality checks will be performed.;1;FALSE;EXISTENCE;perform quality checks;;;;;;;
-1;1;;;6;If the production process has finished, products will be packaged and labeled, before returning to the warehouse.;2;FALSE;SUCCESSION;the production process has finished;package;PRECEDENCE;the production process has finished;return products;;;
-1;1;;;7;Finally, sales will be informed about the completed production and the product can be sold to the customer.;1;FALSE;PRECEDENCE;inform sales;sell product;;;;;;

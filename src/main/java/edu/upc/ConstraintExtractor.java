@@ -12,21 +12,18 @@ import org.json.simple.parser.ParseException;
 
 import com.opencsv.CSVReader;
 
+import edu.upc.atdputils.ConstraintType;
+import edu.upc.atdputils.FoldersUrl;
 import edu.upc.entities.Action;
 import edu.upc.entities.Activity;
 import edu.upc.entities.Constraint;
 import edu.upc.entities.SentenceConstraint;
+import edu.upc.freelingutils.ActionType;
+import edu.upc.freelingutils.FreelingUtils;
 import edu.upc.handler.ConstraintHandler;
-import edu.upc.handler.ParserHandler;
-import edu.upc.handler.PatternsHandler;
-import edu.upc.utils.ActionType;
-import edu.upc.utils.ConstraintType;
-import edu.upc.utils.FoldersUrl;
-import edu.upc.utils.Utils;
 
 public class ConstraintExtractor {
 
-	private static ParserHandler parser;
 	static private DecimalFormat decimalFormal = new DecimalFormat("#.###");
 	static private String justNameOfFile;
 
@@ -46,7 +43,7 @@ public class ConstraintExtractor {
 
 			for (File path : filePaths) {
 				String[] result = process(path);
-				justNameOfFile = Utils.getFileNameWithoutExtension(path);
+				justNameOfFile = FreelingUtils.getFileNameWithoutExtension(path);
 				csvWriter.append(justNameOfFile);
 				csvWriter.append("\t" + result[0]);
 				csvWriter.append("\t" + result[1]);
@@ -60,7 +57,7 @@ public class ConstraintExtractor {
 			csvWriter.close();
 		} else {
 			String[] result = process(new File(args[0]));
-			justNameOfFile = Utils.getFileNameWithoutExtension(new File(args[0]));
+			justNameOfFile = FreelingUtils.getFileNameWithoutExtension(new File(args[0]));
 			csvWriter.append(justNameOfFile);
 			csvWriter.append("\t" + result[0]);
 			csvWriter.append("\t" + result[1]);
@@ -76,7 +73,7 @@ public class ConstraintExtractor {
 	}
 
 	public static String[] process(File file) throws ParseException, IOException {
-		justNameOfFile = Utils.getFileNameWithoutExtension(new File(file.toString()));
+		justNameOfFile = FreelingUtils.getFileNameWithoutExtension(new File(file.toString()));
 		File csvFile = file;// new File(fileUrl);
 		ArrayList<SentenceConstraint> sentenceConstrainsAnnotated = new ArrayList<SentenceConstraint>();
 		// extract fragments from csv file
@@ -118,12 +115,10 @@ public class ConstraintExtractor {
 		}
 		ArrayList<SentenceConstraint> sentenceConstrainsGenerated = new ArrayList<SentenceConstraint>();
 		for (int i = 0; i < sentenceConstrainsAnnotated.size(); i++) {
-			parseText(sentenceConstrainsAnnotated.get(i).getSentenceText());
-			PatternsHandler patternHandler = new PatternsHandler(parser.getTokens(), parser.getTrees(),
-					parser.getActivitiesList());
+			Parser parser = new Parser(sentenceConstrainsAnnotated.get(i).getSentenceText(), "all");
 			SentenceConstraint sentenceConstrainExtracted = new SentenceConstraint();
-			ConstraintHandler constraint = new ConstraintHandler(patternHandler.getActivitiesList(),
-					parser.getTrees().get(0), parser.getTokens());
+			ConstraintHandler constraint = new ConstraintHandler(parser.getActivitiesList(), parser.getTrees().get(0),
+					parser.getTokens());
 			sentenceConstrainExtracted = constraint.generate();
 			if (sentenceConstrainExtracted != null) {
 				System.out.println("--> Constrains #: " + sentenceConstrainExtracted.getConstrains().size() + ", "
@@ -153,8 +148,8 @@ public class ConstraintExtractor {
 		Integer totalCoincidence = 0;
 
 		for (int i = 0; i < sentenceConstrainsAnnotated.size(); i++) {
-			Integer gold = 0; 
-			Integer predicted = 0; 
+			Integer gold = 0;
+			Integer predicted = 0;
 			Integer coincidence = 0;
 			double precision = 0.0;
 			double recall = 0.0;
@@ -304,13 +299,4 @@ public class ConstraintExtractor {
 		return false;
 	}
 
-	private static void parseText(String text) throws ParseException, IOException {
-		System.out.println("------------------- TEXT -------------------------");
-		System.out.println(text);
-		System.out.println("--------------------------------------------------");
-		System.out.println("Parcing...");
-		FreelingConnection freelingConection = new FreelingConnection();
-		String freelingJsonString = freelingConection.getJsonString(text);
-		parser = new ParserHandler(freelingJsonString);
-	}
 }

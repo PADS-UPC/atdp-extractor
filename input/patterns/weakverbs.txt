@@ -1,9 +1,0 @@
-#weak verbs:
-be
-have
-do
-achieve
-start
-exist
-base
-begin

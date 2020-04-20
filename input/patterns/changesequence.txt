@@ -1,1 +1,0 @@
-/¦?parametter1?¦/=destination < (/¦if¦|¦whether¦/ < /¦?parametter2?¦/=origin)

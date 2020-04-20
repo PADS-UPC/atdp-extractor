@@ -1,8 +1,0 @@
-Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
-0	The loan approval process starts by receiving a customer request for a loan amount.	1	false	[PRECEDENCE(A=approval loan, B=receive customer request for loan)]	2	3	0	0.0	0.0	NaN
-1	The risk assessment Web service is invoked to assess the request.	1	false	[EXISTENCE(A=invoke risk assessment web service)]	2	2	2	1.0	1.0	1.0
-2	If the loan is small and the customer is low risk, the loan is approved.	1	false	[PRECEDENCE(A=the loan is small and , B=approve loan)]	3	3	3	1.0	1.0	1.0
-3	If the customer is high risk, the loan is denied.	1	false	[PRECEDENCE(A=the customer is high risk , B=deny loan)]	3	3	3	1.0	1.0	1.0
-4	If the customer needs further review or the loan amount is for $10,000 or more, the request is sent to the approver Web service.	1	false	[PRECEDENCE(A=the customer needs , B=send request)]	3	3	3	1.0	1.0	1.0
-5	The customer receives feedback from the assessor or approver.	1	false	[EXISTENCE(A=receive feedback)]	0	2	0	0.0	NaN	NaN
-				Total	13	16	11	0.688	0.846	0.759

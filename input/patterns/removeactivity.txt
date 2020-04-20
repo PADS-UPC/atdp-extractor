@@ -1,5 +1,0 @@
-#Remove all actions/activities under main action
-/¦ACTIVITY:.*¦|¦ACTION:.*¦/=toRemove >> (/¦to¦/ > /¦ACTION:.*¦/)
-/¦ACTION:.*¦/=toRemove >> (/¦ACTIVITY:.*¦/ > /¦and¦|¦or¦/)
-/¦ACTION:.*¦/=toRemove >> /¦ACTION:.*¦/=result !>> /¦and¦|¦or¦/ !< /¦pronoun¦/
-/¦ACTION:.*¦/=toRemove >> (/¦ACTION:.*¦/=result >> /¦and¦|¦or¦/)

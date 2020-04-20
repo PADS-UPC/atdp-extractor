@@ -1,7 +1,0 @@
-Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
-1;1;;;0;A customer brings in a defective computer and the CRS checks the defect and hands out a repair cost calculation back.;1;FALSE;PRECEDENCE;bring defective computer;hand out a repair cost calculation back;;;;;;
-1;1;;;1;If the customer decides that the costs are acceptable, the process continues, otherwise she takes her computer home unrepaired.;3;FALSE;NONCOOCCURRENCE;the customer decides that the costs are acceptable;otherwise;PRECEDENCE;otherwise;take;PRECEDENCE;the customer decides that the costs are acceptable;continue
-1;1;;;2;The ongoing repair consists of two activities, which are executed, in an arbitrary order.;0;;;;;;;;;;
-1;1;;;3;The first activity is to check and repair the hardware, whereas the second activity checks and configures the software.;1;FALSE;PRECEDENCE;check and repair;check and configure;;;;;;
-1;1;;;4;After each of these activities, the proper system functionality is tested.;1;FALSE;EXISTENCE;test;;;;;;;
-1;1;;;5;If an error is detected another arbitrary repair activity is executed, otherwise the repair is finished.;1;FALSE;END;finish;;;;;;;

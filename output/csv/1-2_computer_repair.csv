@@ -1,8 +1,0 @@
-Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
-0	A customer brings in a defective computer and the CRS checks the defect and hands out a repair cost calculation back.	1	false	[EXISTENCE(A=bring defective computer)]	3	2	1	0.5	0.3333333333333333	0.4
-1	If the customer decides that the costs are acceptable, the process continues, otherwise she takes her computer home unrepaired.	2	false	[NONCOOCCURRENCE(A=the customer decides that the costs are acceptable , B=otherwise), PRECEDENCE(A=otherwise, B=take her computer home)]	9	6	6	1.0	0.6666666666666666	0.8
-2	The ongoing repair consists of two activities, which are executed, in an arbitrary order.	1	false	[EXISTENCE(A=consist ongoing repair)]	0	2	0	0.0	NaN	NaN
-3	The first activity is to check and repair the hardware, whereas the second activity checks and configures the software.	1	false	[PRECEDENCE(A=repair hardware, B=configure software)]	3	3	3	1.0	1.0	1.0
-4	After each of these activities, the proper system functionality is tested.	1	false	[EXISTENCE(A=test proper system functionality)]	2	2	2	1.0	1.0	1.0
-5	If an error is detected another arbitrary repair activity is executed, otherwise the repair is finished.	1	false	[PRECEDENCE(A=an error is detected , B=finish repair)]	2	3	0	0.0	0.0	NaN
-				Total	19	18	12	0.667	0.632	0.649

@@ -1,6 +1,6 @@
 package edu.upc.entities;
 
-import edu.upc.utils.ConstraintType;
+import edu.upc.atdputils.ConstraintType;
 
 public class Constraint {
 

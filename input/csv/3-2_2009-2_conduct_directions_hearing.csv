@@ -1,5 +1,0 @@
-Collection;Source;Original;Reasons for modication;Id;Text;Constraints;Negative;Type;ActionA;ActionB;Type;ActionA;ActionB;Type;ActionA;ActionB
-1;1;;;0;Each morning, the files which have yet to be processed need to be checked, to make sure they are in order for the court hearing that day.;1;FALSE;EXISTENCE;check files;;;;;;;
-1;1;;;1;If some files are missing, a search is initiated, otherwise the files can be physically tracked to the intended location.;3;FALSE;NONCOOCCURRENCE;some files are missing;otherwise;PRECEDENCE;some files are missing;initiate search;PRECEDENCE;some files are missing;track
-1;1;;;2;Once all the files are ready, these are handed to the Associate, and meantime the Judges Lawlist is distributed to the relevant people.;1;FALSE;RESPONSE;hand files;distribute Judges Lawlis;;;;;;
-1;1;;;3;Afterwards, the directions hearings are conducted.;1;FALSE;EXISTENCE;conduct directions hearings;;;;;;;

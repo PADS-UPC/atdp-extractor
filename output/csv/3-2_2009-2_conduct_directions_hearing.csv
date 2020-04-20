@@ -1,6 +1,0 @@
-Id	Text	Constraints	Negative	Constraints extracted	Gold	Predicted	Coincidence	Precision	Recall	F-Score
-0	Each morning, the files which have yet to be processed need to be checked, to make sure they are in order for the court hearing that day.	0			2	0	0	0	0	0
-1	If some files are missing, a search is initiated, otherwise the files can be physically tracked to the intended location.	2	false	[NONCOOCCURRENCE(A=some files are missing , B=otherwise), PRECEDENCE(A=otherwise, B=track file)]	9	6	4	0.6666666666666666	0.4444444444444444	0.5333333333333333
-2	Once all the files are ready, these are handed to the Associate, and meantime the Judges Lawlist is distributed to the relevant people.	1	false	[PRECEDENCE(A=hand these, B=distribute judges_lawlist)]	3	3	2	0.6666666666666666	0.6666666666666666	0.6666666666666666
-3	Afterwards, the directions hearings are conducted.	1	false	[EXISTENCE(A=conduct direction hearing)]	2	2	2	1.0	1.0	1.0
-				Total	16	11	8	0.727	0.5	0.593

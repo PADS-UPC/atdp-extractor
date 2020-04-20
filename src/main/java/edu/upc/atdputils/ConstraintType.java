@@ -1,4 +1,4 @@
-package edu.upc.utils;
+package edu.upc.atdputils;
 
 public enum ConstraintType {
 
