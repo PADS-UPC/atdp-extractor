@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.upc</groupId>
 	<artifactId>atdpextractor</artifactId>
-	<version>1.0.0</version>
+	<version>2.0.0</version>
 	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
@@ -13,14 +13,9 @@
 			<version>1.1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>edu.stanford.nlp</groupId>
-			<artifactId>stanford-corenlp</artifactId>
-			<version>3.9.2</version>
-		</dependency>
-		<dependency>
 			<groupId>edu.upc</groupId>
-			<artifactId>nlp4bpm_commons-with-dependencies</artifactId>
-			<version>0.1.0</version>
+			<artifactId>freeling4bpmn</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 		 <dependency>
             <groupId>com.opencsv</groupId>

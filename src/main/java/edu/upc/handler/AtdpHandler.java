@@ -22,14 +22,14 @@ public class AtdpHandler {
 	private ArrayList<String[]> eventAnnotationList = new ArrayList<String[]>();
 	private ArrayList<String[]> agentAnnotationList = new ArrayList<String[]>();
 	private ArrayList<String[]> patientAnnotationList = new ArrayList<String[]>();
-
+	private Parser parser;
 	private List<Tree> trees;
 
 	public AtdpHandler(String text, String applyPattern) throws IOException, ParseException {
 
 		// PatternsHandler patternHandler = new PatternsHandler(tokens, trees,
 		// activitiesList);
-		Parser parser = new Parser(text, applyPattern);
+		parser = new Parser(text, applyPattern);
 		this.tokens = parser.getTokens();
 		this.activitiesList = parser.getActivitiesList();
 		this.trees = parser.getTrees();
@@ -450,6 +450,14 @@ public class AtdpHandler {
 
 	public void setTrees(List<Tree> trees) {
 		this.trees = trees;
+	}
+
+	public Parser getParser() {
+		return parser;
+	}
+
+	public void setParser(Parser parser) {
+		this.parser = parser;
 	}
 
 }
