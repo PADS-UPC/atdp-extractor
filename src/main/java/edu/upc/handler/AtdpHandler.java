@@ -11,12 +11,14 @@ import org.json.simple.parser.ParseException;
 import edu.stanford.nlp.trees.Tree;
 import edu.upc.Parser;
 import edu.upc.entities.Activity;
+import edu.upc.entities.ActivityAtdp;
 import edu.upc.entities.Token;
 import edu.upc.freelingutils.ActionType;
 
 public class AtdpHandler {
 	private LinkedHashMap<String, Token> tokens;
 	private LinkedHashMap<String, Activity> activitiesList;
+	private LinkedHashMap<String, ActivityAtdp> activitiesListAtdp;
 	private ArrayList<String[]> actionAnnotationList = new ArrayList<String[]>();
 	private ArrayList<String[]> conditionAnnotationList = new ArrayList<String[]>();
 	private ArrayList<String[]> eventAnnotationList = new ArrayList<String[]>();
@@ -32,6 +34,7 @@ public class AtdpHandler {
 		parser = new Parser(text, applyPattern);
 		this.tokens = parser.getTokens();
 		this.activitiesList = parser.getActivitiesList();
+		this.activitiesListAtdp = new LinkedHashMap<String, ActivityAtdp>();
 		this.trees = parser.getTrees();
 
 		Integer count = 0;
@@ -339,7 +342,10 @@ public class AtdpHandler {
 				}
 				if (!found)
 					agentAnnotationList.add(words);
+				activitiesListAtdp.put(activity.getKey(), new ActivityAtdp(activity.getValue()));
+				activitiesListAtdp.get(activity.getKey()).setAtdp_id("T" + count);
 				count++;
+
 			}
 		}
 		return count;
@@ -352,6 +358,8 @@ public class AtdpHandler {
 						activity.getValue().getPatient().getEnd().toString(),
 						activity.getValue().getPatient().getShortText() };
 				patientAnnotationList.add(words);
+				activitiesListAtdp.put(activity.getKey(), new ActivityAtdp(activity.getValue()));
+				activitiesListAtdp.get(activity.getKey()).setAtdp_id("T" + count);
 				count++;
 			}
 		}
@@ -368,6 +376,8 @@ public class AtdpHandler {
 				// activity.getValue().getPatient().getBegin().toString(),
 				// activity.getValue().getPatient().getEnd().toString() };
 				actionAnnotationList.add(words);
+				activitiesListAtdp.put(activity.getKey(), new ActivityAtdp(activity.getValue()));
+				activitiesListAtdp.get(activity.getKey()).setAtdp_id("T" + count);
 				count++;
 			} else if (activity.getValue().getRole().equals(ActionType.EVENT)) {
 				String text = tokens.get(activity.getKey()).getForm().toLowerCase();
@@ -376,6 +386,8 @@ public class AtdpHandler {
 				// activity.getValue().getPatient().getBegin().toString(),
 				// activity.getValue().getPatient().getEnd().toString() };
 				actionAnnotationList.add(words);
+				activitiesListAtdp.put(activity.getKey(), new ActivityAtdp(activity.getValue()));
+				activitiesListAtdp.get(activity.getKey()).setAtdp_id("T" + count);
 				count++;
 
 				String wordsEvent[] = { "A" + aCount, "Event", words[0] };
@@ -398,6 +410,8 @@ public class AtdpHandler {
 				String words[] = { "T" + count, "Condition", begin.toString(), end.toString(), text };
 				conditionAnnotationList.add(words);
 				activity.getValue().setPatient(null);
+				activitiesListAtdp.put(activity.getKey(), new ActivityAtdp(activity.getValue()));
+				activitiesListAtdp.get(activity.getKey()).setAtdp_id("T" + count);
 				count++;
 			}
 		}
@@ -458,6 +472,14 @@ public class AtdpHandler {
 
 	public void setParser(Parser parser) {
 		this.parser = parser;
+	}
+
+	public LinkedHashMap<String, ActivityAtdp> getActivitiesListAtdp() {
+		return activitiesListAtdp;
+	}
+
+	public void setActivitiesListAtdp(LinkedHashMap<String, ActivityAtdp> activitiesListAtdp) {
+		this.activitiesListAtdp = activitiesListAtdp;
 	}
 
 }
